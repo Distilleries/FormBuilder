@@ -9,6 +9,8 @@
 namespace Distilleries\FormBuilder;
 
 use Illuminate\Support\ServiceProvider;
+use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormHelper;
 
 class FormBuilderServiceProvider extends ServiceProvider {
     /**
@@ -18,19 +20,27 @@ class FormBuilderServiceProvider extends ServiceProvider {
      */
     public function register()
     {
+        $this->commands('Kris\LaravelFormBuilder\Console\FormMakeCommand');
 
+        $this->registerFormHelper();
+
+        $this->app->bindShared('laravel-form-builder', function ($app) {
+
+            return new FormBuilder($app, $app['laravel-form-helper']);
+        });
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
+    protected function registerFormHelper()
     {
+        $this->app->bindShared('laravel-form-helper', function ($app) {
 
+            $configuration = $app['config']->get('laravel-form-builder::config');
+
+            return new FormHelper($app['view'], $app['request'], $configuration);
+        });
+
+        $this->app->alias('laravel-form-helper', 'Kris\LaravelFormBuilder\FormHelper');
     }
-
 
     public function boot()
     {
