@@ -1,6 +1,6 @@
 {
   "name": "distilleries/form-builder",
-  "description": "Base on laravel-form-builder (https://github.com/kristijanhusak/laravel-form-builder). That add default component and add view system.",
+  "description": "Based on laravel-form-builder (https://github.com/kristijanhusak/laravel-form-builder). That add default component and add view system.",
   "license": "MIT",
   "authors": [
     {
