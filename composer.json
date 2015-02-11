@@ -23,7 +23,7 @@
     ],
 
     "psr-4": {
-      "Distilleries\\FormBuilder": "src/Distilleries/FormBuilder"
+      "Distilleries\\FormBuilder\\": "src/Distilleries/FormBuilder"
     },
     "files": [
       "src/helpers.php"
