@@ -1,5 +1,5 @@
 {
-  "name": "distilleries/form-builder",
+  "name": "distilleries/laravel-form-builder",
   "description": "Based on laravel-form-builder (https://github.com/kristijanhusak/laravel-form-builder). That add default component and add view system.",
   "license": "MIT",
   "authors": [
@@ -12,7 +12,7 @@
   "require": {
     "php": ">=5.5.0",
     "illuminate/support": "4.*",
-    "kris/laravel-form-builder": "0.*"
+    "illuminate/html": "4.2.*"
   },
   "require-dev": {
     "way/generators": "~2.0",
@@ -21,8 +21,12 @@
   "autoload": {
     "classmap": [
     ],
+
     "psr-4": {
       "Distilleries\\": "src/Distilleries"
-    }
+    },
+    "files": [
+      "src/helpers.php"
+    ]
   }
 }

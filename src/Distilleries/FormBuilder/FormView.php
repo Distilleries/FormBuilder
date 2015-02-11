@@ -8,7 +8,7 @@
 
 namespace Distilleries\FormBuilder;
 
-use Kris\LaravelFormBuilder\Form;
+use Distilleries\FormBuilder\Form;
 
 class FormView extends Form {
 

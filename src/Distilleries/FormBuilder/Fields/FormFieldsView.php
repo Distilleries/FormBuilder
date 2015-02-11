@@ -1,7 +1,7 @@
 <?php namespace Distilleries\FormBuilder\Fields;
 
 
-use Kris\LaravelFormBuilder\Fields\FormField;
+use Distilleries\FormBuilder\Fields\FormField;
 
 class FormFieldsView extends FormField {
 

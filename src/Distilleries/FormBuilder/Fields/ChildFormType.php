@@ -1,6 +1,6 @@
 <?php  namespace Distilleries\FormBuilder\Fields;
 
-use Kris\LaravelFormBuilder\Form;
+use Distilleries\FormBuilder\Form;
 
 class ChildFormType extends ParentType
 {
