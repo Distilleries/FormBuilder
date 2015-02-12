@@ -9,7 +9,7 @@
 @if($showFields)
     @foreach ($fields as $field)
         @if(isset($isNotEditable) and $isNotEditable === true)
-            @if(method_exists($field,'view'))
+            @if(method_exists($field,'view') and $field->getType() != 'submit')
                 <?php $default = $field->getOptions(); ?>
                 @if(empty($default['default_value']))
                     <?php $name = last(explode('[',rtrim($field->getName(),']'))); ?>
