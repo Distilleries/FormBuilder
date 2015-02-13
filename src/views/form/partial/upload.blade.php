@@ -20,7 +20,16 @@
                             <span class="input-group-btn">
                               <button type="button"
                                       class="btn blue"
-                                      onclick="moxman.browse({fields: '{{$id}}', no_host: true});">
+                                      onclick="moxman.browse({
+                                              @if(!empty($options['extensions']))
+                                              extensions: '{{$options['extensions']}}',
+                                              @endif
+                                              @if(!empty($options['view']))
+                                              view: '{{$options['view']}}',
+                                              @endif
+                                              fields: '{{$id}}',
+                                              no_host: true
+                                              });">
                                   <i class="glyphicon glyphicon-upload"></i>
                                   <span>{{ _('Pick file') }}</span>
                               </button>

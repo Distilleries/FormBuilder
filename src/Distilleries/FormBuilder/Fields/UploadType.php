@@ -11,7 +11,8 @@ class UploadType extends FormFieldsView {
     protected function getDefaults()
     {
         return [
-
+            'extensions' => '',
+            'view'       => '',
         ];
     }
 
