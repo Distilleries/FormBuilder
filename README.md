@@ -24,6 +24,7 @@ You can have look to see the usage.
     1. [Select](#21-select)
     2. [Radio](#22-radio)
     3. [Checkbox](#23-checkbox)
+    4. [Ajax](#24-ajax)
   3. [Tag](#3-tag)
   4. [Upload](#4-upload)
   5. [TinyMce](#5-tinymce)
@@ -380,8 +381,106 @@ $this->add('subscription', 'choice', [
      'expanded' => true,
      'multiple' => true
  ])
+```        
+
+###2.3 Ajax
+The tag component is base on  [select2](http://select2.github.io/select2/).
+
+Add the javascript on your bower components:
+
+``` json
+    "dependencies": {
+        "select2": "~3.5.2"
+    }
+```
+
+This component is use to search an element, or multiple elements.
+
+``` php
+    $this-> ->add('user_id', 'choice_ajax', [
+       'action'     => action('Admin\UserController@postSearch'),
+       'validation' => 'required',
+       'formatter'  => [
+           'id'      => 'id',
+           'libelle' => 'email',
+       ],
+       'label'      => _('User')
+   ]);
 ``` 
+
+Field | Explain
+----- | -------
+action | The url of the action for the autocomplete 
+validation | The rules of the javascript validation 
+formatter | To display an element select2 need to know who is the value and who is the text. You can use `,` to concat fields ex: `'libelle' => 'first_name,last_name',`.
+label | The translation of the label display
+maximum_selection_size | If you want limit the number of elements selectable. By default -1 no limit
+multiple | If is a select mutiple or not
+minimumInputLength | Minimum of char needed before send the search request. By default 2 char.
+allowClear | Allow to remove the value from the field.
+
+
+This code is an example of controller method for the search:
             
+ ``` php         
+    // ------------------------------------------------------------------------------------------------
+    public function postSearch()
+    {
+
+        $ids = Input::get('ids');
+
+
+        if (!empty($ids))
+        {
+            $data = $this->model->whereIn($this->model->getKeyName(), $ids)->get();
+
+            return Response::json($data);
+        }
+
+        $term  = Input::get('term');
+        $page  = Input::get('page');
+        $paged = Input::get('page_limit');
+
+        if (empty($paged))
+        {
+            $paged = 10;
+        }
+
+        if (empty($page))
+        {
+            $page = 1;
+        }
+        if (empty($term))
+        {
+            $elements = array();
+            $total    = 0;
+        } else
+        {
+            $elements = $this->model->search($term)->take($paged)->skip(($page - 1) * $paged)->get();
+            $total    = $this->model->search($term)->count();
+
+        }
+
+        return Response::json([
+            'total'    => $total,
+            'elements' => $elements
+        ]);
+
+    }
+``` 
+
+
+Render editable:
+
+![choice_ajax](http://distilleri.es/markdown/formbuilder/_images/choice_ajax.png)
+
+![choice_ajax_multiple](http://distilleri.es/markdown/formbuilder/_images/choice_ajax_multiple.png)
+
+Render not editable:
+
+![choice_ajax_view](http://distilleri.es/markdown/formbuilder/_images/choice_ajax_view.png)
+
+
 ###3 Tag
 The tag component is base on  [select2](http://select2.github.io/select2/).
 
