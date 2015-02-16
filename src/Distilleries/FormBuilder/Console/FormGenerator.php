@@ -28,8 +28,8 @@ class FormGenerator
         array_shift($fullNamespacedPath);
         $className = array_pop($fullNamespacedPath);
 
-        return (object)[
-            'namespace' => join('\\', $fullNamespacedPath),
+        return (object) [
+            'namespace' => ltrim(str_replace('\\\\', '\\', join('\\', $fullNamespacedPath)),'\\'),
             'className' => $className
         ];
     }
