@@ -294,7 +294,8 @@ That what I do in the UserForm. I override the method `getUpdateRules` to add th
 
 
 ## List of fields
-1. Input
+
+### 1 Input
 
 Can be one of those type: 
 
@@ -322,9 +323,9 @@ file | `<input type="text" />`
     ])
 ```
 
-2. Choice
+###2 Choice
 
-2.1 Select
+####2.2 Select
 
 ``` php
  $this->add('subscription', 'choice', [
@@ -334,7 +335,7 @@ file | `<input type="text" />`
     ])
 ``` 
 
-2.2 Radio
+####2.2 Radio
 
 ``` php
 $this->add('subscription', 'choice', [
@@ -345,7 +346,7 @@ $this->add('subscription', 'choice', [
 ```
         
 
-2.3 Checkbox
+###2.3 Checkbox
 
 ``` php
 $this->add('subscription', 'choice', [
@@ -356,7 +357,7 @@ $this->add('subscription', 'choice', [
  ])
 ``` 
             
-3. Tag
+###3 Tag
 The tag component is base on  [select2](http://select2.github.io/select2/).
 
 Add the javascript on your bower components:
@@ -382,7 +383,7 @@ Render not editable:
 ![cc_view](http://distilleri.es/markdown/formbuilder/_images/cc_view.png)
 
 
-4. Upload
+###4 Upload
 The upload field use [moximanager](http://www.moxiemanager.com/) to link the elements with all the media components.
 
 ``` php
@@ -399,7 +400,7 @@ Render editable:
 ![cc](http://distilleri.es/markdown/formbuilder/_images/upload.png)
 
 
-5. TinyMce
+###5 TinyMce
 If you want use a rich content editor you can use [tinymce](http://www.tinymce.com/).
 
 ``` php
@@ -415,7 +416,7 @@ Render not editable:
 ![tinymce_view](http://distilleri.es/markdown/formbuilder/_images/tinymce_view.png)
  
   
-6. Textarea
+###6 Textarea
 The textarea work like a text field.
 
 ``` php
@@ -424,7 +425,7 @@ The textarea work like a text field.
     ]);
 ```      
 
-7. Button
+###7 Button
 You can add a button to submit your form or to back at the last page.
 
 ``` php
@@ -452,7 +453,7 @@ Render editable:
 The button submit for the part not editable is never render.
 
 
-8. Address Picker
+###8 Address Picker
 
 The address picker base on [http://logicify.github.io/jquery-locationpicker-plugin/](http://logicify.github.io/jquery-locationpicker-plugin/)
 
@@ -486,7 +487,7 @@ $this->add('address', 'address_picker', [
  
  
  
-9. Form
+###9 Form
 You can add a form in a form. 
 It pretty cool when you compose a big form to split it in multiple.
 For example I have a profile form with an address. I use the address on the profile form.
