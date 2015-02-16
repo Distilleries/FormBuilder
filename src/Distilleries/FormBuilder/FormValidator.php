@@ -56,23 +56,6 @@ class FormValidator extends FormView {
             }
         }
 
-        if (!isset($options['noInEditView']))
-        {
-            $options['noInEditView'] = false;
-        }
-
-
-        if (!empty($this->formOptions) and !empty($this->formOptions['do_not_display_' . $name]) and $this->formOptions['do_not_display_' . $name] === true)
-        {
-            $type = 'hidden';
-
-            if (!empty($options) and !empty($options['selected']))
-            {
-                $options['default_value'] = $options['selected'];
-            }
-
-        }
-
         return parent::add($name, $type, $options, $modify);
     }
 

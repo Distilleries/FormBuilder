@@ -12,17 +12,46 @@ use Distilleries\FormBuilder\Form;
 
 class FormView extends Form {
 
-    /**
-     * Render full form
-     *
-     * @param array $options
-     * @param bool $showFields
-     * @return string
-     */
+
+    // ------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------
+
+    public function add($name, $type = 'text', array $options = [], $modify = false, $noOveride = false)
+    {
+
+
+        if (!isset($options['noInEditView']))
+        {
+            $options['noInEditView'] = false;
+        }
+
+
+        if (!empty($this->formOptions) and !empty($this->formOptions['do_not_display_' . $name]) and $this->formOptions['do_not_display_' . $name] === true)
+        {
+            $type = 'hidden';
+
+            if (!empty($options) and !empty($options['selected']))
+            {
+                $options['default_value'] = $options['selected'];
+            }
+
+        }
+
+        return parent::add($name, $type, $options, $modify);
+    }
+
+    // ------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------
+
     public function renderFormView(array $options = [])
     {
         return $this->view($options, $this->fields);
     }
+
+    // ------------------------------------------------------------------------------------------------
+
 
     public function renderRestView($showFormEnd = true, $showFields = true)
     {
@@ -30,6 +59,8 @@ class FormView extends Form {
 
         return $this->view([], $fields);
     }
+
+    // ------------------------------------------------------------------------------------------------
 
     protected function view($options, $fields)
     {
