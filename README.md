@@ -410,9 +410,11 @@ If you want use a rich content editor you can use [tinymce](http://www.tinymce.c
 ```            
 
 Render editable:
+
 ![tinymce](http://distilleri.es/markdown/formbuilder/_images/tinymce.png)
 
 Render not editable:
+
 ![tinymce_view](http://distilleri.es/markdown/formbuilder/_images/tinymce_view.png)
  
   
@@ -448,6 +450,7 @@ You can add a button to submit your form or to back at the last page.
 ```          
       
 Render editable:
+
 ![button](http://distilleri.es/markdown/formbuilder/_images/button.png)
 
 The button submit for the part not editable is never render.
@@ -480,9 +483,11 @@ $this->add('address', 'address_picker', [
 ]);
 ``` 
  Render editable:
+ 
  ![address_picker](http://distilleri.es/markdown/formbuilder/_images/address_picker.png)
  
  Render not editable:
+ 
  ![address_picker_view](http://distilleri.es/markdown/formbuilder/_images/address_picker_view.png)
  
  
@@ -505,7 +510,9 @@ For example I have a profile form with an address. I use the address on the prof
 ```
 
  Render editable:
+ 
  ![form](http://distilleri.es/markdown/formbuilder/_images/form.png)
  
  Render not editable:
+ 
  ![form_view](http://distilleri.es/markdown/formbuilder/_images/form_view.png)
