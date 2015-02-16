@@ -7,6 +7,31 @@ I add the validation system directly in the form part.
 This package is use into the [Expendable cms](https://github.com/Distilleries/Expendable) and [DatatableBuilder package](https://github.com/Distilleries/DatatableBuilder).
 You can have look to see the usage.
 
+
+## Table of contents
+1. [Installation](#installation)
+2. [Basic usage](#usage)
+3. [Type of form](#type-of-form)
+  1. [Form](#form)
+  2. [FormView](#formview)
+  3. [FormValidator](#formvalidator)
+    1. [Use the validation client side](#use-the-validation-client-side)
+    2. [Use the validation server side](#use-the-validation-server-side)
+    3. [Check the rules on your controller](#check-the-rules-on-your-controller)
+4. [List of fields](#list-of-fields)
+  1. [Input](#1-input)
+  2. [Choice](#2-choice)
+    1. [Select](#21-select)
+    2. [Radio](#22-radio)
+    3. [Checkbox](#23-checkbox)
+  3. [Tag](#3-tag)
+  4. [Upload](#4-upload)
+  5. [TinyMce](#5-tinymce)
+  6. [Textarea](#6-textarea)
+  7. [Button](#7-button)
+  8. [Address Picker](#8-address-picker)
+  9. [Form](#9-form)
+
 ##Installation
 
 Add on your composer.json
@@ -40,7 +65,7 @@ And Facade (also in `config/app.php`)
 
 
 
-### Basic usage
+###Basic usage
 
 Creating form classes is easy. Lets assume PSR-4 is set for loading namespace `Project` in `app/Project` folder. With a simple artisan command I can create form:
 
@@ -98,17 +123,17 @@ class SongForm extends FormValidator
 }
 ```
 
-## Type of form
+##Type of form
 
-### Form
+###Form
 
 This is the base class from the package  [https://github.com/kristijanhusak/laravel-form-builder/tree/laravel-4](https://github.com/kristijanhusak/laravel-form-builder/tree/laravel-4).
 It use to add the fields and generate the form. Check the readme to know how use the component.
 
-### FormView
+###FormView
 Extend the class Form to add a render with edit.
 
-#### Use the view
+####Use the view
 To display an not editable form you can use `form_view` or `form_rest_view`.
 To display a specific field you can use `form_widget_view`.
 
@@ -146,7 +171,7 @@ On the user form I don't want display the role choice:
        ]);
 ```
 
-### FormValidator
+###FormValidator
 Extend the FormView and add the system of validation.
 
 ``` php
@@ -157,7 +182,7 @@ Extend the FormView and add the system of validation.
 The both table use [the rules of laravel](http://laravel.com/docs/4.2/validation).
 If the `$rules_update` keep in null the `$rules` is use to validate the form.
 
-#### Use the validation client side
+####Use the validation client side
  By default I use [jQuery validation Engine](https://github.com/posabsolute/jQuery-Validation-Engine) for the javascript validation.
  When you add a field you can add an option `validation` to add the javascript validation.
  
@@ -168,7 +193,7 @@ If the `$rules_update` keep in null the `$rules` is use to validate the form.
      ]);
 ```
 
-#### Use the validation server side
+####Use the validation server side
 
 If you have a form User like this:
 
@@ -271,7 +296,7 @@ In the FormValidator you have two methods to get the update or general rules (`g
 That what I do in the UserForm. I override the method `getUpdateRules` to add the id of user for the validation.
 
 
-#### Check the rules on your controller:
+####Check the rules on your controller:
 
  ``` php
     $form = FormBuilder::create('Project\Forms\UserForm', [
@@ -293,9 +318,9 @@ That what I do in the UserForm. I override the method `getUpdateRules` to add th
 
 
 
-## List of fields
+##List of fields
 
-### 1 Input
+###1 Input
 
 Can be one of those type: 
 
@@ -325,7 +350,7 @@ file | `<input type="text" />`
 
 ###2 Choice
 
-####2.2 Select
+####2.1 Select
 
 ``` php
  $this->add('subscription', 'choice', [
