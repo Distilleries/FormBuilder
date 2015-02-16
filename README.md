@@ -383,7 +383,7 @@ $this->add('subscription', 'choice', [
  ])
 ```        
 
-###2.3 Ajax
+###2.4 Ajax
 The tag component is base on  [select2](http://select2.github.io/select2/).
 
 Add the javascript on your bower components:
