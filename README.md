@@ -10,7 +10,7 @@ You can have look to see the usage.
 
 ## Table of contents
 1. [Installation](#installation)
-2. [Basic usage](#usage)
+2. [Basic usage](#basic-usage)
 3. [Type of form](#type-of-form)
   1. [Form](#form)
   2. [FormView](#formview)
@@ -38,7 +38,7 @@ Add on your composer.json
 
 ``` json
     "require": {
-        "distilleries/datatable-builder": "1.*",
+        "distilleries/form-builder": "1.*",
     }
 ```
 
