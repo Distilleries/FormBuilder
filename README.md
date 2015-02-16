@@ -1,8 +1,8 @@
 # Laravel 4 Form Builder
 
 Based on laravel-form-builder (https://github.com/kristijanhusak/laravel-form-builder). 
-We add default no editable form and few complex form fields.
-We add the validation system directly in the form part.
+I add default no editable form and few complex form fields.
+I add the validation system directly in the form part.
 
 This package is use into the [Expendable cms](https://github.com/Distilleries/Expendable) and [DatatableBuilder package](https://github.com/Distilleries/DatatableBuilder).
 You can have look to see the usage.
@@ -42,7 +42,7 @@ And Facade (also in `config/app.php`)
 
 ### Basic usage
 
-Creating form classes is easy. Lets assume PSR-4 is set for loading namespace `Project` in `app/Project` folder. With a simple artisan command we can create form:
+Creating form classes is easy. Lets assume PSR-4 is set for loading namespace `Project` in `app/Project` folder. With a simple artisan command I can create form:
 
 ``` sh
     php artisan form:make app/Project/Forms/PostForm
@@ -108,17 +108,17 @@ It use to add the fields and generate the form. Check the readme to know how use
 ### FormView
 Extend the class Form to add a render with edit.
 
-#### Use form to the view
-To display a form in not editable mode you can use `form_view` or `form_rest_view`.
+#### Use the view
+To display an not editable form you can use `form_view` or `form_rest_view`.
 To display a specific field you can use `form_widget_view`.
 
 ``` blade
- {{ form_rest_view($form) }}
+ {{ form_view($form) }}
 ```
 
 In your form field you can add an option to not display this field on the view `noInEditView`.
 
-For example in user form we add a choice to allow the password change. We don't want it in the view part.
+For example in user form I add a choice to allow the password change. I don't want it in the view part.
 
 ``` php
     $this->add('change_password', 'checkbox', [
@@ -132,8 +132,8 @@ For example in user form we add a choice to allow the password change. We don't 
 Other way, you have a sub form and you don't want display some fields.
 You can specify an option call `do_not_display_` plus the name of the field.
 
-Example we have a customer form and this form use a sub form user. 
-On the user form we don't want display the role choice:
+Example I have a customer form and this form use a sub form user. 
+On the user form I don't want display the role choice:
 
 ``` php
        $this->add('user', 'form', [
@@ -265,10 +265,10 @@ class UserForm extends FormValidator {
 ```
 
 You can see the `password` field is not require on the update.
-We have an other specific rule. We want check if the email address is unique without if the email is use by your-self.
+I have an other specific rule. I want check if the email address is unique without if the email is use by your-self.
 
-In the FormValidator you have two methods to get the update or general rules (`getGeneralRules`, `getUpdateRules`) . You can override them to return the ne rules.
-That what we do in the UserForm. We override the method `getUpdateRules` to add the id of user for the validation.
+In the FormValidator you have two methods to get the update or general rules (`getGeneralRules`, `getUpdateRules`) . You can override them to return the good rules.
+That what I do in the UserForm. I override the method `getUpdateRules` to add the id of user for the validation.
 
 
 #### Check the rules on your controller:
@@ -298,17 +298,22 @@ That what we do in the UserForm. We override the method `getUpdateRules` to add 
 
 Can be one of those type: 
 
-* text
-* email
-* url
-* tel
-* number
-* date
-* search
-* password
-* hidden
-* number
-* file
+
+
+Field | Type
+----- | -----
+text  | `<input type="text" />`
+email | `<input type="email" />`
+url   |  `<input type="url" />`
+tel   | `<input type="tel" />`
+number | `<input type="number" />`
+date  | `<input type="date" />`
+search | `<input type="search" />`
+password | `<input type="password" />`
+hidden | `<input type="hidden" />`
+number | `<input type="number" />`
+file | `<input type="text" />`
+
 
 ``` php
     $this->add('first_name', 'text', [
@@ -484,7 +489,7 @@ $this->add('address', 'address_picker', [
 9. Form
 You can add a form in a form. 
 It pretty cool when you compose a big form to split it in multiple.
-For example we have a profile form with an address. I use the address on the profile form.
+For example I have a profile form with an address. I use the address on the profile form.
 
 ``` php
   $this
