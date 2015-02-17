@@ -8,6 +8,7 @@ return [
         'field_class'         => 'form-control',
         'error_class'         => 'help-block text-danger'
     ],
+    'moxy_manager_path'=>'/assets/moxiemanager/plugin.min.js',
     // Templates
     'form'           => 'laravel-form-builder::form.partial.form',
     'text'           => 'laravel-form-builder::form.partial.text',
