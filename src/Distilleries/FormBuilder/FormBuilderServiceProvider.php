@@ -63,7 +63,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
             __DIR__ . '/../../config/config.php' => config_path('form-builder.php')
         ]);
         $this->publishes([
-            __DIR__ . '/../../views'             => base_path('resources/views/vendor/distilleries/form-builder'),
+            __DIR__ . '/../../views'             => base_path('resources/views/vendor/form-builder'),
         ],'views');
 
 

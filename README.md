@@ -151,7 +151,7 @@ To display an not editable form you can use `form_view` or `form_rest_view`.
 To display a specific field you can use `form_widget_view`.
 
 ``` blade
- {{ form_view($form) }}
+ {!! form_view($form) !!}
 ```
 
 In your form field you can add an option to not display this field on the view `noInEditView`.
