@@ -11,8 +11,9 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.5.0",
-    "illuminate/support": "4.*",
-    "illuminate/html": "4.2.*"
+    "illuminate/support": "5.*",
+    "illuminate/html": "5.*",
+    "kris/laravel-form-builder": "1.*"
   },
   "require-dev": {
     "way/generators": "~2.0",
@@ -21,7 +22,6 @@
   "autoload": {
     "classmap": [
     ],
-
     "psr-4": {
       "Distilleries\\FormBuilder\\": "src/Distilleries/FormBuilder"
     },
