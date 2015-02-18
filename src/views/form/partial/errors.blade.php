@@ -3,7 +3,7 @@
     <button class="close" data-dismiss="alert"></button>
     <ul>
       @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
+          <li>{!! $error !!} </li>
       @endforeach
      </ul>
   </div>
@@ -13,7 +13,7 @@
 <div class="alert alert-danger alert-dismissible">
     <button class="close" data-dismiss="alert"></button>
     <ul>
-        <li>{{ Session::get('error') }}</li>
+        <li>{!! Session::get('error') !!} </li>
      </ul>
   </div>
 @endif
@@ -24,7 +24,7 @@
     <button class="close" data-dismiss="alert"></button>
     <ul>
       @foreach (Session::get('warnings') as $warning)
-          <li>{{ $warning }}</li>
+          <li>{!! $warning !!} </li>
       @endforeach
      </ul>
   </div>
@@ -35,7 +35,7 @@
     <button class="close" data-dismiss="alert"></button>
     <ul>
       @foreach (Session::get('messages') as $messages)
-          <li>{{ $messages }}</li>
+          <li>{!! $messages !!} </li>
       @endforeach
      </ul>
   </div>

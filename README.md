@@ -1,11 +1,9 @@
-# Laravel 4 Form Builder
+# Laravel 5 Form Builder
 
 Based on laravel-form-builder (https://github.com/kristijanhusak/laravel-form-builder). 
 I add default no editable form and few complex form fields.
 I add the validation system directly in the form part.
 
-This package is use into the [Expendable cms](https://github.com/Distilleries/Expendable) and [DatatableBuilder package](https://github.com/Distilleries/DatatableBuilder).
-You can have look to see the usage.
 
 
 ## Table of contents
@@ -39,7 +37,7 @@ Add on your composer.json
 
 ``` json
     "require": {
-        "distilleries/form-builder": "1.*",
+        "distilleries/form-builder": "2.*",
     }
 ```
 
@@ -65,31 +63,45 @@ And Facade (also in `config/app.php`)
 ```
 
 
+Export the configuration (optional):
+
+```ssh
+php artisan vendor:publish --provider="Distilleries\FormBuilder\FormBuilderServiceProvider"
+```
+
+Export the views  (optional):
+
+```ssh
+php artisan vendor:publish --provider="Distilleries\FormBuilder\FormBuilderServiceProvider"  --tag="views"
+```
+
 
 ###Basic usage
 
-Creating form classes is easy. Lets assume PSR-4 is set for loading namespace `Project` in `app/Project` folder. With a simple artisan command I can create form:
+Creating form classes is easy.
+With a simple artisan command I can create form:
 
 ``` sh
-    php artisan form:make app/Project/Forms/PostForm
+    php artisan form:make Forms/PostForm
 ```
 
-you create form class in path `app/Project/Forms/PostForm.php` that looks like this:
+you create form class in path `app/Forms/PostForm.php` that looks like this:
 
 ``` php
-<?php namespace Project\Forms;
+<?php namespace App\Forms;
 
 use Distilleries\FormBuilder\FormValidator;
 
-class PostForm extends FormValidator {
-
-    public static $rules = [];
+class PostForm extends FormValidator
+{
+    public static $rules        = [];
     public static $rules_update = null;
 
     public function buildForm()
     {
+        // Add fields here...
 
-        $this->addDefaultActions();
+         $this->addDefaultActions();
     }
 }
 ```
@@ -97,13 +109,13 @@ class PostForm extends FormValidator {
 You can add fields which you want when creating command like this:
 
 ``` sh
-php artisan form:make app/Project/Forms/SongForm --fields="name:text, lyrics:textarea, publish:checkbox"
+php artisan form:make Forms/SongForm --fields="name:text, lyrics:textarea, publish:checkbox"
 ```
 
-And that will create form in path `app/Project/Forms/SongForm.php` with content:
+And that will create form in path `app/Forms/SongForm.php` with content:
 
 ``` php
-<?php namespace Project\Forms;
+<?php namespace App\Forms;
 
 use Distilleries\FormBuilder\FormValidator;
 

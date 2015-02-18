@@ -13,6 +13,7 @@
     "php": ">=5.5.0",
     "illuminate/support": "5.*",
     "illuminate/html": "5.*",
+    "illuminate/filesystem": "5.*",
     "kris/laravel-form-builder": "1.*"
   },
   "require-dev": {

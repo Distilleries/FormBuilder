@@ -1,6 +1,8 @@
 <?php namespace Distilleries\FormBuilder\Fields;
 
 
+use Kris\LaravelFormBuilder\Fields\FormField;
+
 class FormFieldsView extends FormField {
 
     public function view(array $options = [], $showLabel = true, $showField = true, $showError = false)

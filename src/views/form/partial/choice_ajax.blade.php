@@ -1,26 +1,26 @@
 @if ($showLabel && $showField)
-    <div {{ $options['wrapperAttrs'] }} >
+    <div {!! $options['wrapperAttrs'] !!}  >
 @endif
 
         @if ($showLabel)
             <?php $options['label_attr']['class'] .= ' col-md-3'; ?>
-            {{ Form::label($name, $options['label'], $options['label_attr']) }}
+            {!! Form::label($name, $options['label'], $options['label_attr']) !!}
         @endif
 
 
             <div class="col-md-4">
                 @if(isset($noEdit) and $noEdit === true)
-                   <div class="{{$name}}-noEdit">{{_('Loading...')}}</div>
+                   <div class="{!!$name!!} -noEdit">{!!_('Loading...')!!} </div>
                 @endif
 
                 <?php $options['attr']['class'] = 'input-lg ' . $options['attr']['class']; ?>
-                {{ Form::input('hidden', $name, $options['default_value'], $options['attr']) }}
+                {!! Form::input('hidden', $name, $options['default_value'], $options['attr']) !!}
 
                 @if($showError && isset($errors))
-                    {{$errors->first(array_get($options, 'real_name', $name), '<div '.$options['errorAttrs'].'>:message</div>')}}
+                    {!!$errors->first(array_get($options, 'real_name', $name), '<div '.$options['errorAttrs'].'>:message</div>')!!}
                 @endif
                 @if(isset($options['help']))
-                    <span class="help-block">{{$options['help']}}</span>
+                    <span class="help-block">{!!$options['help']!!} </span>
                 @endif
 
             </div>
@@ -28,10 +28,10 @@
                 <?php $options['formatter']['libelle'] = explode(',',$options['formatter']['libelle']); ?>
                 jQuery(document).ready(function () {
                     @if(isset($noEdit) and $noEdit === true)
-                            var elt =  jQuery("input[name='{{$name}}']").val().split(",");
+                            var elt =  jQuery("input[name='{!!$name!!} ']").val().split(",");
 
                             jQuery.ajax({
-                                url: "{{ (!empty($options['action']))?$options['action']:'' }}",
+                                url: "{!! (!empty($options['action']))?$options['action']:'' !!} ",
                                 dataType: 'json',
                                 type: 'POST',
                                 data: {
@@ -46,8 +46,8 @@
                                         var item = data[i];
                                         @foreach($options['formatter']['libelle'] as $libelle)
 
-                                        if (typeof(item.{{ $libelle  }}) != 'undefined' && item.{{ $libelle  }} != null) {
-                                            libelle += item.{{ $libelle  }}+' ';
+                                        if (typeof(item.{!! $libelle  !!} ) != 'undefined' && item.{!! $libelle  !!}  != null) {
+                                            libelle += item.{!! $libelle  !!} +' ';
                                         }
 
                                         @endforeach
@@ -61,8 +61,8 @@
                                         var libelle = '';
                                         var item = data[i];
                                         @foreach($options['formatter']['libelle'] as $libelle)
-                                        if (typeof(item.{{ $libelle  }}) != 'undefined' && item.{{ $libelle  }} != null) {
-                                            libelle += item.{{ $libelle  }}+' ';
+                                        if (typeof(item.{!! $libelle  !!} ) != 'undefined' && item.{!! $libelle  !!}  != null) {
+                                            libelle += item.{!! $libelle  !!} +' ';
                                         }
                                         @endforeach
 
@@ -71,23 +71,23 @@
 
                                 @endif
 
-                                jQuery('.{{$name}}-noEdit').html(tpl);
+                                jQuery('.{!!$name!!} -noEdit').html(tpl);
                             });
                     @else
 
-                        jQuery("input[name='{{$name}}']").select2({
-                                placeholder: "{{_('Select a value')}}",
-                                minimumInputLength: {{ $options['minimumInputLength']  }},
-                                allowClear: {{$options['allowClear']}},
-                                maximumSelectionSize: {{ $options['maximum_selection_size'] }},
-                                multiple: {{ $options['multiple'] }},
+                        jQuery("input[name='{!!$name!!} ']").select2({
+                                placeholder: "{!!_('Select a value')!!} ",
+                                minimumInputLength: {!! $options['minimumInputLength']  !!} ,
+                                allowClear: {!!$options['allowClear']!!} ,
+                                maximumSelectionSize: {!! $options['maximum_selection_size'] !!} ,
+                                multiple: {!! $options['multiple'] !!} ,
                                 initSelection: function (element, callback) {
 
                                     var elt = element.val().split(",");
 
                                     if (elt.length > 0) {
                                         jQuery.ajax({
-                                            url: "{{ (!empty($options['action']))?$options['action']:'' }}",
+                                            url: "{!! (!empty($options['action']))?$options['action']:'' !!} ",
                                             dataType: 'json',
                                             type: 'POST',
                                             data: {
@@ -107,23 +107,23 @@
                                     return clazz;
                                 },
                                 formatNoMatches: function () {
-                                    return "{{_('No result')}}";
+                                    return "{!!_('No result')!!} ";
                                 },
                                 formatInputTooShort: function (input, min) {
                                     var n = min - input.length;
-                                    return "{{_('Please enter :number or more character')}}".replace(':number', n);
+                                    return "{!!_('Please enter :number or more character')!!} ".replace(':number', n);
                                 },
                                 formatSelectionTooBig: function (limit) {
-                                    return "{{_('You can only select :number items')}}".replace(':number', limit);
+                                    return "{!!_('You can only select :number items')!!} ".replace(':number', limit);
                                 },
                                 formatLoadMore: function (pageNumber) {
-                                    return "{{_('Loading...')}}";
+                                    return "{!!_('Loading...')!!} ";
                                 },
                                 formatSearching: function () {
-                                    return "{{_('Searching...')}}";
+                                    return "{!!_('Searching...')!!} ";
                                 },
                                 ajax: {
-                                    url: "{{ (!empty($options['action']))?$options['action']:'' }}",
+                                    url: "{!! (!empty($options['action']))?$options['action']:'' !!} ",
                                     dataType: 'json',
                                     type: 'POST',
                                     quietMillis: 100,
@@ -145,8 +145,8 @@
 
                                     var libelle = '';
                                     @foreach($options['formatter']['libelle'] as $libelle)
-                                        if (typeof(item.{{ $libelle  }}) != 'undefined' && item.{{ $libelle  }} != null) {
-                                            libelle += item.{{ $libelle  }}+' ';
+                                        if (typeof(item.{!! $libelle  !!} ) != 'undefined' && item.{!! $libelle  !!}  != null) {
+                                            libelle += item.{!! $libelle  !!} +' ';
                                         }
                                     @endforeach
 
@@ -156,8 +156,8 @@
                                 formatSelection: function format(item) {
                                     var libelle = '';
                                     @foreach($options['formatter']['libelle'] as $libelle)
-                                    if (typeof(item.{{ $libelle  }}) != 'undefined' && item.{{ $libelle  }} != null) {
-                                        libelle += item.{{ $libelle  }}+' ';
+                                    if (typeof(item.{!! $libelle  !!} ) != 'undefined' && item.{!! $libelle  !!}  != null) {
+                                        libelle += item.{!! $libelle  !!} +' ';
                                     }
                                     @endforeach
 

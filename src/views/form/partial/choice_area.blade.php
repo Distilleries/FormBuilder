@@ -10,16 +10,16 @@
 
             <div class="input-group">
                 <div class="icheck-inline">
-                    <label>{{ $header['libelle'] }}</label>
+                    <label>{!! $header['libelle'] !!} </label>
                     <label>
-                     {{ Form::radio($header['id'], 1, false, [
+                     {!! Form::radio($header['id'], 1, false, [
                             'class'=>'icheck check-all',
-                      ]) }} {{ _('All') }}
+                      ]) !!}  {!! _('All') !!}
                     </label>
                     <label>
-                     {{ Form::radio($header['id'], 0, false, [
+                     {!! Form::radio($header['id'], 0, false, [
                             'class'=>'icheck uncheck-all',
-                      ]) }}  {{ _('None') }}
+                      ]) !!}   {!! _('None') !!}
                     </label>
                 </div>
             </div>
@@ -33,18 +33,18 @@
             <?php $iterator = 0; ?>
             @foreach($choices as $libelle=>$choice)
                 <tr>
-                    <td>{{ $libelle }}</td>
+                    <td>{!! $libelle !!} </td>
                     @foreach($options['choices'] as $header)
                         <td>
                             <div class="input-group">
                                 <div class="icheck-list">
                                     @foreach($choice as $ch)
                                         <label>
-                                        {{ Form::checkbox($name.'['.$header['id'].'][]', $ch['id'], in_array($ch['id'],$options['selected'][$header['id']]), [
+                                        {!! Form::checkbox($name.'['.$header['id'].'][]', $ch['id'], in_array($ch['id'],$options['selected'][$header['id']]), [
                                             'class'=>'icheck',
                                             'data-checkbox'=>(in_array($ch['id'],$options['selected'][$header['id']]))?'icheckbox_line-blue':'icheckbox_line-grey',
                                             'data-label'=>$ch['libelle'],
-                                        ]) }}
+                                        ]) !!}
                                         </label>
                                     @endforeach
                                 </div>

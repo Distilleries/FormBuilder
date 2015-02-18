@@ -8,11 +8,11 @@
 
 namespace Distilleries\FormBuilder;
 
-use Illuminate\Support\ServiceProvider;
-use Distilleries\FormBuilder\FormBuilder;
-use Distilleries\FormBuilder\FormHelper;
 
-class FormBuilderServiceProvider extends ServiceProvider {
+use Kris\LaravelFormBuilder\FormHelper;
+use Illuminate\Foundation\AliasLoader;
+
+class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderServiceProvider {
 
 
     /**
@@ -22,39 +22,52 @@ class FormBuilderServiceProvider extends ServiceProvider {
      */
     public function register()
     {
+        parent::register();
         $this->commands('Distilleries\FormBuilder\Console\FormMakeCommand');
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/config.php',
+            'form-builder'
+        );
 
-        $this->registerFormHelper();
 
-        $this->app->bindShared('laravel-form-builder', function ($app) {
+        AliasLoader::getInstance()->alias(
+            'File',
+            'Illuminate\Support\Facades\File'
+        );
 
-            return new FormBuilder($app, $app['laravel-form-helper']);
-        });
+
     }
 
     protected function registerFormHelper()
     {
-        $this->app->bindShared('laravel-form-helper', function ($app) {
+        $this->app->bindShared('laravel-form-helper', function ($app)
+        {
 
-            $configuration = $app['config']->get('laravel-form-builder::config');
+            $configuration = $app['config']->get('form-builder');
 
             return new FormHelper($app['view'], $app['request'], $configuration);
         });
 
-        $this->app->alias('laravel-form-helper', 'Distilleries\FormBuilder\FormHelper');
+        $this->app->alias('laravel-form-helper', 'Kris\LaravelFormBuilder\FormHelper');
     }
+
 
     public function boot()
     {
-        $this->package('distilleries/laravel-form-builder');
+
+        parent::boot();
+
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'form-builder');
+
+        $this->publishes([
+            __DIR__ . '/../../config/config.php' => config_path('form-builder.php')
+        ]);
+        $this->publishes([
+            __DIR__ . '/../../views'             => base_path('resources/views/vendor/distilleries/form-builder'),
+        ],'views');
+
+
     }
 
-    /**
-     * @return string[]
-     */
-    public function provides()
-    {
-        return ['laravel-form-builder'];
-    }
 
 }

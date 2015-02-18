@@ -8,9 +8,9 @@
         <div class="portlet-title">
             <div class="caption">
                 @if(isset($options['icon']))
-                    <i class="glyphicon glyphicon-{{$options['icon']}}"></i>
+                    <i class="glyphicon glyphicon-{!!$options['icon']!!} "></i>
                 @endif
-                <span class="caption-subject bold uppercase font-yellow"> {{$options['label']}}</span>
+                <span class="caption-subject bold uppercase font-yellow"> {!!$options['label']!!} </span>
             </div>
         </div>
     </div>
@@ -25,19 +25,19 @@
                     <?php $default = $child->getOptions(); ?>
                     @if(empty($default['default_value']))
                         <?php $name = last(explode('[',rtrim($child->getName(),']'))); ?>
-                        {{ $child->view(['default_value'=>(!empty($model) && $model && $model->exists and isset($model->{$name}))?$model->{$name}:$default['default_value']]) }}
+                        {!! $child->view(['default_value'=>(!empty($model) && $model && $model->exists and isset($model->{$name}))?$model->{$name}:$default['default_value']]) !!}
                     @else
-                        {{ $child->view() }}
+                        {!! $child->view() !!}
                     @endif
 
                 @endif
             @else
-                {{$child->render() }}
+                {!!$child->render() !!}
             @endif
         @endif
     @endforeach
 @endif
 
 @if ($showError && isset($errors))
-    {{ $errors->first(array_get($options, 'real_name', $name), '<div '.$options['errorAttrs'].'>:message</div>') }}
+    {!! $errors->first(array_get($options, 'real_name', $name), '<div '.$options['errorAttrs'].'>:message</div>') !!}
 @endif

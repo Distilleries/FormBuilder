@@ -1,8 +1,8 @@
 @if ($showStart)
     @if($model && $model->exists)
-        {{ Form::model($model, $formOptions) }}
+        {!! Form::model($model, $formOptions) !!}
     @else
-        {{ Form::open($formOptions) }}
+        {!! Form::open($formOptions) !!}
     @endif
 @endif
 
@@ -13,21 +13,21 @@
                 <?php $default = $field->getOptions(); ?>
                 @if(empty($default['default_value']))
                     <?php $name = last(explode('[',rtrim($field->getName(),']'))); ?>
-                    {{ $field->view([
+                    {!! $field->view([
                     'default_value'=>($model && $model->exists and isset($model->{$name}))?$model->{$name}:$default['default_value'],
                     'model'=>(!empty($model) and isset($model->{$name}))?$model->{$name}:null
-                    ]) }}
+                    ]) !!}
                 @else
-                    {{ $field->view() }}
+                    {!! $field->view() !!}
                 @endif
 
             @endif
         @else
-            {{$field->render() }}
+            {!!$field->render() !!}
         @endif
     @endforeach
 @endif
 
 @if ($showEnd)
-    {{ Form::close() }}
+    {!! Form::close() !!}
 @endif

@@ -1,6 +1,7 @@
 <?php  namespace Distilleries\FormBuilder\Fields;
 
-use Distilleries\FormBuilder\Form;
+
+use Kris\LaravelFormBuilder\Form;
 
 abstract class ParentType extends FormFieldsView
 {
