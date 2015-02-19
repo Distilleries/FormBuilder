@@ -17,5 +17,4 @@ class DatePicker extends FormFieldsView {
             'todayHighlight' => true
         ];
     }
-
 }

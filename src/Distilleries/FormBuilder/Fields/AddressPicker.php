@@ -21,5 +21,4 @@ class AddressPicker extends FormFieldsView {
             ]
         ];
     }
-
 }

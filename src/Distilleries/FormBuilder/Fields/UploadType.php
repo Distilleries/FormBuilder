@@ -15,5 +15,4 @@ class UploadType extends FormFieldsView {
             'view'       => '',
         ];
     }
-
 }

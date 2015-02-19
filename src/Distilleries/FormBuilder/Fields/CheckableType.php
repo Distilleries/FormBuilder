@@ -17,5 +17,4 @@ class CheckableType extends FormFieldsView
             'checked' => false
         ];
     }
-
 }

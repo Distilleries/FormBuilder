@@ -20,5 +20,4 @@ class Tinymce extends FormFieldsView {
 
         ];
     }
-
-} 
+}

@@ -33,9 +33,7 @@ class FormFieldsView extends FormField {
             ->render();
     }
 
-
     protected function getTemplate(){
         return '';
     }
-
-} 
+}

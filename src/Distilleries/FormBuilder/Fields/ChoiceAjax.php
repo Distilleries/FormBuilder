@@ -21,6 +21,4 @@ class ChoiceAjax extends FormFieldsView {
             ]
         ];
     }
-
-
 }

@@ -1,12 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mfrancois
- * Date: 11/02/2015
- * Time: 10:40 AM
- */
+<?php namespace Distilleries\FormBuilder;
 
-namespace Distilleries\FormBuilder;
 use \Validator, \Input, \Redirect;
 
 class FormValidator extends FormView {
@@ -166,10 +159,4 @@ class FormValidator extends FormView {
 
         return static::$rules_update;
     }
-
-
-    // ------------------------------------------------------------------------------------------------
-    // ------------------------------------------------------------------------------------------------
-    // ------------------------------------------------------------------------------------------------
-
 }

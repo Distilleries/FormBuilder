@@ -1,13 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mfrancois
- * Date: 11/02/2015
- * Time: 10:38 AM
- */
-
-namespace Distilleries\FormBuilder;
-
+<?php namespace Distilleries\FormBuilder;
 
 use Kris\LaravelFormBuilder\FormHelper;
 use Illuminate\Foundation\AliasLoader;
@@ -68,6 +59,4 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
 
 
     }
-
-
 }

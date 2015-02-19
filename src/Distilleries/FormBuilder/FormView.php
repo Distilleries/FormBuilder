@@ -1,12 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mfrancois
- * Date: 11/02/2015
- * Time: 10:39 AM
- */
+<?php namespace Distilleries\FormBuilder;
 
-namespace Distilleries\FormBuilder;
 use Kris\LaravelFormBuilder\Form;
 
 class FormView extends Form {

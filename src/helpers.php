@@ -1,30 +1,31 @@
 <?php
 
-    use Distilleries\FormBuilder\Fields\FormField;
+use Distilleries\FormBuilder\Fields\FormField;
 
 
-    if (!function_exists('form_widget_view')) {
+if (!function_exists('form_widget_view')) {
 
-        function form_widget_view(FormField $formField, array $options = [])
-        {
-            return $formField->view($options, false, true, false);
-        }
-
+    function form_widget_view(FormField $formField, array $options = [])
+    {
+        return $formField->view($options, false, true, false);
     }
 
-    if (!function_exists('form_view')) {
+}
 
-        function form_view(\Distilleries\FormBuilder\FormView $form, array $options = [])
-        {
-            return $form->renderFormView($options);
-        }
+if (!function_exists('form_view')) {
 
+    function form_view(\Distilleries\FormBuilder\FormView $form, array $options = [])
+    {
+        return $form->renderFormView($options);
     }
-    if (!function_exists('form_rest_view')) {
 
-        function form_rest_view(\Distilleries\FormBuilder\FormView $form)
-        {
-            return $form->renderRestView(false);
-        }
+}
 
+if (!function_exists('form_rest_view')) {
+
+    function form_rest_view(\Distilleries\FormBuilder\FormView $form)
+    {
+        return $form->renderRestView(false);
     }
+
+}

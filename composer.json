@@ -17,8 +17,6 @@
     "kris/laravel-form-builder": "1.*"
   },
   "require-dev": {
-    "way/generators": "~2.0",
-    "fzaninotto/faker": "1.4.*"
   },
   "autoload": {
     "classmap": [

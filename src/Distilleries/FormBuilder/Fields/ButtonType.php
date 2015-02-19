@@ -14,5 +14,4 @@ class ButtonType extends FormFieldsView
             'attr' => ['type' => $this->type]
         ];
     }
-
 }

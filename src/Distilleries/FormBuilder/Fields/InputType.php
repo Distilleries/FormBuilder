@@ -2,10 +2,8 @@
 
 class InputType extends FormFieldsView
 {
-
     protected function getTemplate()
     {
         return 'text';
     }
-
 }

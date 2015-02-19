@@ -1,3 +1,9 @@
+[![Code quality](http://img.shields.io/scrutinizer/g/distilleries/form-builder.svg?style=flat)](https://scrutinizer-ci.com/g/kristijanhusak/laravel-form-builder/?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/distilleries/form-builder.svg?style=flat)](https://packagist.org/packages/distilleries/form-builder)
+[![Latest Stable Version](https://img.shields.io/packagist/v/distilleries/form-builder.svg?style=flat)](https://packagist.org/packages/distilleries/form-builder)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
+
+
 # Laravel 5 Form Builder
 
 Based on laravel-form-builder (https://github.com/kristijanhusak/laravel-form-builder). 

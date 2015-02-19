@@ -6,4 +6,4 @@ class ChoiceArea extends FormFieldsView {
     {
         return 'choice_area';
     }
-} 
+}
