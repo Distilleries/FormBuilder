@@ -16,7 +16,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
         parent::register();
         $this->commands('Distilleries\FormBuilder\Console\FormMakeCommand');
         $this->mergeConfigFrom(
-            __DIR__ . '/../../config/config.php',
+            __DIR__.'/../../config/config.php',
             'form-builder'
         );
 
@@ -31,7 +31,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
 
     protected function registerFormHelper()
     {
-        $this->app->bindShared('laravel-form-helper', function ($app)
+        $this->app->bindShared('laravel-form-helper', function($app)
         {
 
             $configuration = $app['config']->get('form-builder');
@@ -48,14 +48,14 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
 
         parent::boot();
 
-        $this->loadViewsFrom(__DIR__ . '/../../views', 'form-builder');
+        $this->loadViewsFrom(__DIR__.'/../../views', 'form-builder');
 
         $this->publishes([
-            __DIR__ . '/../../config/config.php' => config_path('form-builder.php')
+            __DIR__.'/../../config/config.php' => config_path('form-builder.php')
         ]);
         $this->publishes([
-            __DIR__ . '/../../views'             => base_path('resources/views/vendor/form-builder'),
-        ],'views');
+            __DIR__.'/../../views'             => base_path('resources/views/vendor/form-builder'),
+        ], 'views');
 
 
     }

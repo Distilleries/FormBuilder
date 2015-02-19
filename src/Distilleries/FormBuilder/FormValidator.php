@@ -25,7 +25,7 @@ class FormValidator extends FormView {
     public function add($name, $type = 'text', array $options = [], $modify = false, $noOveride = false)
     {
 
-        $defaultClass = $this->formHelper->getConfig('defaults.field_class') . ' ';
+        $defaultClass = $this->formHelper->getConfig('defaults.field_class').' ';
         if (empty($options['attr']['class']))
         {
             $options['attr']['class'] = '';
@@ -33,13 +33,13 @@ class FormValidator extends FormView {
 
         if (empty($noOveride))
         {
-            $options['attr']['class'] = $defaultClass . ' ' . $options['attr']['class'] . ' ';
+            $options['attr']['class'] = $defaultClass.' '.$options['attr']['class'].' ';
         }
 
         if (!empty($options) && isset($options['validation']))
         {
 
-            $options['attr']['class'] .= ' validate[' . $options['validation'] . ']' . ' ';
+            $options['attr']['class'] .= ' validate['.$options['validation'].']'.' ';
             unset($options['validation']);
         }
 

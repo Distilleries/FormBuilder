@@ -13,7 +13,7 @@
                    <div class="{!!$name!!} -noEdit">{!!_('Loading...')!!} </div>
                 @endif
 
-                <?php $options['attr']['class'] = 'input-lg ' . $options['attr']['class']; ?>
+                <?php $options['attr']['class'] = 'input-lg '.$options['attr']['class']; ?>
                 {!! Form::input('hidden', $name, $options['default_value'], $options['attr']) !!}
 
                 @if($showError && isset($errors))
@@ -25,7 +25,7 @@
 
             </div>
             <script type="text/javascript">
-                <?php $options['formatter']['libelle'] = explode(',',$options['formatter']['libelle']); ?>
+                <?php $options['formatter']['libelle'] = explode(',', $options['formatter']['libelle']); ?>
                 jQuery(document).ready(function () {
                     @if(isset($noEdit) and $noEdit === true)
                             var elt =  jQuery("input[name='{!!$name!!} ']").val().split(",");

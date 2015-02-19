@@ -24,7 +24,7 @@
                 @if(method_exists($child,'view'))
                     <?php $default = $child->getOptions(); ?>
                     @if(empty($default['default_value']))
-                        <?php $name = last(explode('[',rtrim($child->getName(),']'))); ?>
+                        <?php $name = last(explode('[', rtrim($child->getName(), ']'))); ?>
                         {!! $child->view(['default_value'=>(!empty($model) && $model && $model->exists and isset($model->{$name}))?$model->{$name}:$default['default_value']]) !!}
                     @else
                         {!! $child->view() !!}
