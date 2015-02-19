@@ -45,9 +45,9 @@ class FormView extends Form {
     // ------------------------------------------------------------------------------------------------
 
 
-    public function renderRestView($showFormEnd = true, $showFields = true)
+    public function renderRestView()
     {
-        $fields = $this->getUnrenderedFields($showFormEnd,$showFields);
+        $fields = $this->getUnrenderedFields();
 
         return $this->view([], $fields);
     }

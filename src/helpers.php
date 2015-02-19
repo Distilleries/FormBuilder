@@ -24,7 +24,7 @@ if (!function_exists('form_rest_view')) {
 
     function form_rest_view(\Distilleries\FormBuilder\FormView $form)
     {
-        return $form->renderRestView(false);
+        return $form->renderRestView();
     }
 
 }
