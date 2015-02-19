@@ -1,6 +1,8 @@
 <?php namespace Distilleries\FormBuilder;
 
-use \Validator, \Input, \Redirect;
+use \Validator;
+use \Input;
+use \Redirect;
 
 class FormValidator extends FormView {
 
@@ -34,14 +36,14 @@ class FormValidator extends FormView {
             $options['attr']['class'] = $defaultClass . ' ' . $options['attr']['class'] . ' ';
         }
 
-        if (!empty($options) and isset($options['validation']))
+        if (!empty($options) && isset($options['validation']))
         {
 
             $options['attr']['class'] .= ' validate[' . $options['validation'] . ']' . ' ';
             unset($options['validation']);
         }
 
-        if ($type == 'choice' and !isset($options['selected']))
+        if ($type == 'choice' && !isset($options['selected']))
         {
             if (isset($this->model->{$name}))
             {
@@ -141,7 +143,7 @@ class FormValidator extends FormView {
     {
         $key = !empty($this->model) ? Input::get($this->model->getKeyName()) : null;
 
-        return ($this->getUpdateRules() == null or empty($key)) ? $this->getGeneralRules() : $this->getUpdateRules();
+        return ($this->getUpdateRules() == null || empty($key)) ? $this->getGeneralRules() : $this->getUpdateRules();
     }
 
     // ------------------------------------------------------------------------------------------------

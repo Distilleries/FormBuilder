@@ -19,11 +19,11 @@ class FormView extends Form {
         }
 
 
-        if (!empty($this->formOptions) and !empty($this->formOptions['do_not_display_' . $name]) and $this->formOptions['do_not_display_' . $name] === true)
+        if (!empty($this->formOptions) && !empty($this->formOptions['do_not_display_' . $name]) && $this->formOptions['do_not_display_' . $name] === true)
         {
             $type = 'hidden';
 
-            if (!empty($options) and !empty($options['selected']))
+            if (!empty($options) && !empty($options['selected']))
             {
                 $options['default_value'] = $options['selected'];
             }

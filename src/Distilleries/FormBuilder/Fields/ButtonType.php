@@ -1,6 +1,5 @@
 <?php namespace Distilleries\FormBuilder\Fields;
 
-
 class ButtonType extends FormFieldsView
 {
     protected function getTemplate()

@@ -2,7 +2,6 @@
 
 use Distilleries\FormBuilder\Fields\FormField;
 
-
 if (!function_exists('form_widget_view')) {
 
     function form_widget_view(FormField $formField, array $options = [])

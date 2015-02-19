@@ -1,6 +1,5 @@
 <?php namespace Distilleries\FormBuilder\Fields;
 
-
 use Kris\LaravelFormBuilder\Fields\FormField;
 
 class FormFieldsView extends FormField {
@@ -16,7 +15,7 @@ class FormFieldsView extends FormField {
             $showLabel = false;
         }
 
-        if(!empty($options['noInEditView']) and $options['noInEditView'] === true){
+        if(!empty($options['noInEditView']) && $options['noInEditView'] === true){
             return '';
         }
 
