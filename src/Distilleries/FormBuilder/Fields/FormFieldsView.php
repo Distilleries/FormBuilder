@@ -15,7 +15,7 @@ class FormFieldsView extends FormField {
             $showLabel = false;
         }
 
-        if(!empty($options['noInEditView']) && $options['noInEditView'] === true){
+        if (!empty($options['noInEditView']) && $options['noInEditView'] === true) {
             return '';
         }
 
@@ -32,7 +32,7 @@ class FormFieldsView extends FormField {
             ->render();
     }
 
-    protected function getTemplate(){
+    protected function getTemplate() {
         return '';
     }
 }

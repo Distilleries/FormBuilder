@@ -12,7 +12,7 @@ class Tinymce extends FormFieldsView {
     {
 
         return [
-            'moxiemanager' => (\File::exists(public_path($this->formHelper->getConfig('moxy_manager_path')))?$this->formHelper->getConfig('moxy_manager_path'):false),
+            'moxiemanager' => (\File::exists(public_path($this->formHelper->getConfig('moxy_manager_path'))) ? $this->formHelper->getConfig('moxy_manager_path') : false),
 
         ];
     }
