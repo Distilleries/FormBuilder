@@ -53,7 +53,7 @@
                         </td>
                     @endforeach
                 </tr>
-                <?php $iterator++; ?>
+                <?php $iterator ++; ?>
             @endforeach
         @endif
     </tbody>

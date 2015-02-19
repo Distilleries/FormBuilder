@@ -74,10 +74,10 @@ class ChoiceType extends ParentType
      */
     protected function buildCheckableChildren($fieldType, $fieldMultiple)
     {
-        foreach ((array)$this->options['choices'] as $key => $choice) {
-            $id = $choice . '_' . $key;
+        foreach ((array) $this->options['choices'] as $key => $choice) {
+            $id = $choice.'_'.$key;
             $this->children[] = new $fieldType(
-                $this->name . $fieldMultiple,
+                $this->name.$fieldMultiple,
                 $this->choiceType,
                 $this->parent,
                 [
@@ -85,7 +85,7 @@ class ChoiceType extends ParentType
                     'label_attr' => ['for' => $id],
                     'label'         => $choice,
                     'is_child'      => true,
-                    'checked'       => in_array($key, (array)$this->options['selected']),
+                    'checked'       => in_array($key, (array) $this->options['selected']),
                     'default_value' => $key
                 ]
             );
@@ -101,7 +101,7 @@ class ChoiceType extends ParentType
     protected function buildSelect($fieldType, $fieldMultiple)
     {
         $this->children[] = new $fieldType(
-            $this->name . $fieldMultiple,
+            $this->name.$fieldMultiple,
             $this->choiceType,
             $this->parent,
             $this->formHelper->mergeOptions($this->options, ['is_child' => true])
