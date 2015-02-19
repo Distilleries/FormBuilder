@@ -16,8 +16,6 @@
     "illuminate/filesystem": "5.*",
     "kris/laravel-form-builder": "1.*"
   },
-  "require-dev": {
-  },
   "autoload": {
     "classmap": [
     ],
