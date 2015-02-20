@@ -1,6 +1,5 @@
 <?php namespace Distilleries\FormBuilder;
 
-use Distilleries\FormBuilder\Helpers\PermissionUtil;
 use Kris\LaravelFormBuilder\FormHelper;
 use Illuminate\Foundation\AliasLoader;
 
