@@ -36,6 +36,8 @@ I add the validation system directly in the form part.
   7. [Button](#7-button)
   8. [Address Picker](#8-address-picker)
   9. [Form](#9-form)
+6. [Controller](#controller)
+7. [Troubleshooting](#troubleshooting)
 
 ##Installation
 
@@ -69,7 +71,7 @@ And Facade (also in `config/app.php`)
 ```
 
 
-Export the configuration (optional):
+Export the configuration:
 
 ```ssh
 php artisan vendor:publish --provider="Distilleries\FormBuilder\FormBuilderServiceProvider"
@@ -658,3 +660,136 @@ For example I have a profile form with an address. I use the address on the prof
  Render not editable:
  
  ![form_view](http://distilleri.es/markdown/formbuilder/_images/form_view.png)
+ 
+##Controller
+
+You can use the trait `Distilleries\FormBuilder\States\FormStateTrait` to add in your controller the default methods use with the form.
+
+Example:
+I created a `UserForm` class:
+
+```php
+<?php namespace App\Forms;
+
+use Distilleries\FormBuilder\FormValidator;
+
+class UserForm extends FormValidator
+{
+    public static $rules        = [
+        'email'=>'required'
+    ];
+    public static $rules_update = null;
+
+    public function buildForm()
+    {
+        $this
+            ->add('id', 'hidden')
+            ->add('email', 'email');
+
+         $this->addDefaultActions();
+    }
+}
+```
+
+I created a controller `app/Http/Controllers/FormController`:
+
+```php
+<?php namespace App\Http\Controllers;
+
+
+use App\Forms\UserForm;
+use Distilleries\FormBuilder\States\FormStateTrait;
+
+class FormController extends Controller {
+
+	use FormStateTrait;
+	/*
+	|--------------------------------------------------------------------------
+	| Welcome Controller
+	|--------------------------------------------------------------------------
+	|
+	| This controller renders the "marketing page" for the application and
+	| is configured to only allow guests. Like most of the other sample
+	| controllers, you are free to modify or remove it as you desire.
+	|
+	*/
+
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct(\App\User $model, UserForm $form)
+	{
+		$this->model = $model;
+		$this->form = $form;
+	}
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getIndex()
+	{
+
+		return $this->getEdit();
+
+	}
+
+}
+
+```
+
+I add the controller on the route file :
+
+```php
+Route::controllers([
+	'form' => 'FormController'
+]);
+```
+
+Like you can see I inject the model and the form on the constructor.
+On the published template I add my style `resources/views/vendor/form-builder/state/form.blade.php`
+
+```php
+
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="/vendor/datatable-builder/js/datatable.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @include('form-builder::form.partial.errors')
+            <div class="tabbable tabbable-custom boxless tabbable-reversed ">
+                @yield('form')
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+```
+That it you have your form link to the user model.
+
+##Troubleshooting
+
+When you use the trait on your controller remove the route cache to be sure the routes are correctly generated.
+
+```ssh
+php artisan route:cache && php artisan route:list
+```
