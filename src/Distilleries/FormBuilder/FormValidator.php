@@ -1,7 +1,6 @@
 <?php namespace Distilleries\FormBuilder;
 
 use \Validator;
-use \Input;
 use \Redirect;
 
 class FormValidator extends FormView {
@@ -58,7 +57,7 @@ class FormValidator extends FormView {
 
     public function validateAndRedirectBack()
     {
-        return Redirect::back()->withErrors($this->validate())->withInput(Input::all());
+        return Redirect::back()->withErrors($this->validate())->withInput($this->formHelper->getRequest()->all());
 
     }
 
@@ -76,7 +75,7 @@ class FormValidator extends FormView {
                 if ($field->getType() == 'form')
                 {
 
-                    $validation = Validator::make(Input::get($field->getName()), $field->getClass()->getRules());
+                    $validation = Validator::make($this->formHelper->getRequest()->get($field->getName()), $field->getClass()->getRules());
 
                     if ($validation->fails())
                     {
@@ -88,7 +87,7 @@ class FormValidator extends FormView {
                 }
             }
 
-            $validation = Validator::make(Input::all(), $this->getRules());
+            $validation = Validator::make($this->formHelper->getRequest()->all(), $this->getRules());
 
             if ($validation->fails())
             {
@@ -141,7 +140,7 @@ class FormValidator extends FormView {
 
     protected function getRules()
     {
-        $key = !empty($this->model) ? Input::get($this->model->getKeyName()) : null;
+        $key = !empty($this->model) ? $this->formHelper->getRequest()->get($this->model->getKeyName()) : null;
 
         return ($this->getUpdateRules() == null || empty($key)) ? $this->getGeneralRules() : $this->getUpdateRules();
     }

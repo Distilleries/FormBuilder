@@ -1,5 +1,6 @@
 <?php namespace Distilleries\FormBuilder;
 
+use Distilleries\FormBuilder\Helpers\PermissionUtil;
 use Kris\LaravelFormBuilder\FormHelper;
 use Illuminate\Foundation\AliasLoader;
 
@@ -20,13 +21,19 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
             'form-builder'
         );
 
-
-        AliasLoader::getInstance()->alias(
-            'File',
-            'Illuminate\Support\Facades\File'
-        );
+        $this->registerPermissionUtils();
+        $this->alias();
 
 
+    }
+
+    protected function registerPermissionUtils()
+    {
+        $this->app->bindShared('permission-util', function ($app) {
+            return new PermissionUtil($app['auth']);
+        });
+
+        $this->app->alias('permission-util', 'Distilleries\FormBuilder\Contracts\PermissionUtilContract');
     }
 
     protected function registerFormHelper()
@@ -58,5 +65,30 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
         ], 'views');
 
 
+    }
+
+
+    public function alias() {
+
+        AliasLoader::getInstance()->alias(
+            'FormBuilder',
+            'Distilleries\FormBuilder\Facades\FormBuilder'
+        );
+        AliasLoader::getInstance()->alias(
+            'Request',
+            'Illuminate\Support\Facades\Request'
+        );
+        AliasLoader::getInstance()->alias(
+            'Route',
+            'Illuminate\Support\Facades\Route'
+        );
+        AliasLoader::getInstance()->alias(
+            'File',
+            'Illuminate\Support\Facades\File'
+        );
+        AliasLoader::getInstance()->alias(
+            'Redirect',
+            'Illuminate\Support\Facades\Redirect'
+        );
     }
 }
