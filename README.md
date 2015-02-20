@@ -36,7 +36,6 @@ I add the validation system directly in the form part.
   7. [Button](#7-button)
   8. [Address Picker](#8-address-picker)
   9. [Form](#9-form)
-5. [Authorisation](#authorisation)
 6. [Controller](#controller)
 7. [Troubleshooting](#troubleshooting)
 
@@ -661,34 +660,6 @@ For example I have a profile form with an address. I use the address on the prof
  Render not editable:
  
  ![form_view](http://distilleri.es/markdown/formbuilder/_images/form_view.png)
-
-##Authorisation
-Now the form builder provide a class to check the permission.
-This class use the `auth` of your application.
-On your model use for the Auth add a method `hasAccess` to define if the user have access or not.
-The key in param is a string action like  `UserController@getEdit`.
-
-```php
-    public function hasAccess($key)
-    {
-        return true;
-    }
-```
-
-If the user is connected and your model haven't this method the class return true.
-If the user is not connected the permission util return false.
-To disabled the restriction of connected user just go in config file and put false in `auth_restricted`.
-
-If you use multi auth package just provide the good auth you want use:
-
-```php
-    $this->app->bindShared('permission-util', function () {
-            return new PermissionUtil(Auth::administrator());
-    });
-```
-
-You can use the helper `has_access` to detect if the user can access to the key you give.
-
  
 ##Controller
 

@@ -14,9 +14,7 @@
                 <div class="form-actions top">
                     <div class="btn-set pull-right">
                        {!! form_widget($form->back) !!}
-                       @if(has_access($route.'getEdit'))
                            <a href="{{ action($route.'getEdit',$id) }}" class="btn btn-sm yellow filter-submit margin-bottom"><i class="glyphicon glyphicon-edit"></i> {{_('Edit')}}</a>
-                       @endif
                     </div>
                 </div>
                 <div class="form-horizontal form-bordered">
@@ -25,9 +23,7 @@
                 <div class="form-actions ">
                     <div class="btn-set pull-right">
                        {!! form_widget($form->back) !!}
-                       @if(has_access($route.'getEdit'))
                           <a href="{{ action($route.'getEdit',$id) }}" class="btn btn-sm yellow filter-submit margin-bottom"><i class="glyphicon glyphicon-edit"></i> {{_('Edit')}}</a>
-                      @endif
                     </div>
                 </div>
             </div>

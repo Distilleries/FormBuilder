@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'auth_restricted'=>true,
     'defaults'       => [
         'wrapper_class'       => 'form-group',
         'wrapper_error_class' => 'has-error',

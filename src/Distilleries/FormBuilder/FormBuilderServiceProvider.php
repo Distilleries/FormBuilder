@@ -21,19 +21,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
             'form-builder'
         );
 
-        $this->registerPermissionUtils();
         $this->alias();
-
-
-    }
-
-    protected function registerPermissionUtils()
-    {
-        $this->app->bindShared('permission-util', function($app) {
-            return new PermissionUtil($app['auth']);
-        });
-
-        $this->app->alias('permission-util', 'Distilleries\FormBuilder\Contracts\PermissionUtilContract');
     }
 
     protected function registerFormHelper()
