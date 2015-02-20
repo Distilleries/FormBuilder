@@ -29,7 +29,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
 
     protected function registerPermissionUtils()
     {
-        $this->app->bindShared('permission-util', function ($app) {
+        $this->app->bindShared('permission-util', function($app) {
             return new PermissionUtil($app['auth']);
         });
 

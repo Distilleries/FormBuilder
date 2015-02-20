@@ -113,15 +113,7 @@ trait FormStateTrait {
             $this->model->update($data);
         }
 
-        $result = $this->afterSave();
-
-        if (!empty($result))
-        {
-            return $result;
-        }
-
-        return null;
-
+        return $this->afterSave();
     }
 
 
@@ -137,10 +129,13 @@ trait FormStateTrait {
         $form_content = view('form-builder::form.components.formgenerator.info', [
             'form'  => $form,
             'id'    => $id,
-            'route' => !empty($action) ? $this->getControllerNameForAction(). '@' : '',
+            'route' => $this->getControllerNameForAction(). '@',
         ]);
 
-        return view('form-builder::form.state.form');
+
+        return view('form-builder::form.state.form',[
+            'form'=>$form_content
+        ]);
 
     }
 

@@ -687,6 +687,8 @@ If you use multi auth package just provide the good auth you want use:
     });
 ```
 
+You can use the helper `has_access` to detect if the user can access to the key you give.
+
  
 ##Controller
 

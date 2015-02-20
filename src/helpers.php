@@ -28,3 +28,12 @@ if (!function_exists('form_rest_view')) {
     }
 
 }
+
+if (!function_exists('has_access')) {
+
+    function has_access($key)
+    {
+        return app('permission-util')->hasAccess($key);
+    }
+
+}
