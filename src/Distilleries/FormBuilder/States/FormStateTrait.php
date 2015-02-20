@@ -98,11 +98,6 @@ trait FormStateTrait {
     protected function save($data)
     {
 
-        if (!empty($result))
-        {
-            return $result;
-        }
-
         $primary = Request::get($this->model->getKeyName());
         if (empty($primary))
         {
