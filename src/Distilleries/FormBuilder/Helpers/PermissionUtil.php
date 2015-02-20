@@ -15,14 +15,14 @@ class PermissionUtil implements PermissionUtilContract {
 
     public function hasAccess($key)
     {
-        if(empty($this->config['auth_restricted'])) {
+        if (empty($this->config['auth_restricted'])) {
             return true;
         }
 
-        if($this->auth->check()){
+        if ($this->auth->check()) {
 
             $user = $this->auth->get();
-            if(!method_exists($user,'hasAccess')) {
+            if (!method_exists($user, 'hasAccess')) {
                 return true;
             }
 
