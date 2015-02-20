@@ -34,7 +34,7 @@ trait FormStateTrait {
             'form' => $form
         ]);
 
-        return view('form-builder::form.state.form',[
+        return view('form-builder::form.state.form', [
             'form'=>$form_content
         ]);
     }
@@ -124,11 +124,11 @@ trait FormStateTrait {
         $form_content = view('form-builder::form.components.formgenerator.info', [
             'form'  => $form,
             'id'    => $id,
-            'route' => $this->getControllerNameForAction(). '@',
+            'route' => $this->getControllerNameForAction().'@',
         ]);
 
 
-        return view('form-builder::form.state.form',[
+        return view('form-builder::form.state.form', [
             'form'=>$form_content
         ]);
 
