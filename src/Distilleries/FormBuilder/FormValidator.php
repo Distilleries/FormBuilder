@@ -120,14 +120,14 @@ class FormValidator extends FormView {
     {
         $this->add('submit', 'submit',
             [
-                'label' => _('Save'),
+                'label' => trans('form-builder::form.save'),
                 'attr'  => [
                     'class' => 'btn green'
                 ],
             ], false, true)
             ->add('back', 'button',
                 [
-                    'label' => _('Back'),
+                    'label' => trans('form-builder::form.back'),
                     'attr'  => [
                         'class'   => 'btn default',
                         'onclick' => 'window.history.back()'

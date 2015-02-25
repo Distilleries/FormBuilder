@@ -15,10 +15,6 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
     {
         parent::register();
         $this->commands('Distilleries\FormBuilder\Console\FormMakeCommand');
-        $this->mergeConfigFrom(
-            __DIR__.'/../../config/config.php',
-            'form-builder'
-        );
 
         $this->alias();
     }
@@ -43,6 +39,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
         parent::boot();
 
         $this->loadViewsFrom(__DIR__.'/../../views', 'form-builder');
+        $this->loadTranslationsFrom(__DIR__.'/../../lang', 'form-builder');
 
         $this->publishes([
             __DIR__.'/../../config/config.php' => config_path('form-builder.php')
@@ -52,6 +49,10 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
         ], 'views');
 
 
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/config.php',
+            'form-builder'
+        );
     }
 
 

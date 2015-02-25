@@ -23,10 +23,10 @@
         {!!$errors->first(array_get($options, 'real_name', $name), '<div '.$options['errorAttrs'].'>:message</div>')!!}
     @endif
     @if ($showLabel)
-    @if(isset($options['help']))
-    <span class="help-block">{!!$options['help']!!} </span>
-    @endif
-    </div>
+        @if(isset($options['help']))
+        <span class="help-block">{!!$options['help']!!}</span>
+        @endif
+        </div>
     @endif
 @if ($showLabel && $showField)
 </div>

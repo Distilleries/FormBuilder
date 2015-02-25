@@ -10,7 +10,7 @@
 
             <div class="col-md-4">
                 @if(isset($noEdit) and $noEdit === true)
-                   <div class="{!!$name!!} -noEdit">{!!_('Loading...')!!} </div>
+                   <div class="{!!$name!!} -noEdit">{{trans('form-builder::form.loading')}}</div>
                 @endif
 
                 <?php $options['attr']['class'] = 'input-lg '.$options['attr']['class']; ?>
@@ -76,7 +76,7 @@
                     @else
 
                         jQuery("input[name='{!!$name!!} ']").select2({
-                                placeholder: "{!!_('Select a value')!!} ",
+                                placeholder: "{{trans('form-builder::form.select_value')}}",
                                 minimumInputLength: {!! $options['minimumInputLength']  !!} ,
                                 allowClear: {!!$options['allowClear']!!} ,
                                 maximumSelectionSize: {!! $options['maximum_selection_size'] !!} ,
@@ -107,20 +107,20 @@
                                     return clazz;
                                 },
                                 formatNoMatches: function () {
-                                    return "{!!_('No result')!!} ";
+                                    return "{{trans('form-builder::form.no_result)}}";
                                 },
                                 formatInputTooShort: function (input, min) {
                                     var n = min - input.length;
-                                    return "{!!_('Please enter :number or more character')!!} ".replace(':number', n);
+                                    return "{{trans('form-builder::form.please_enter_n_or_more_character')}}".replace(':number', n);
                                 },
                                 formatSelectionTooBig: function (limit) {
-                                    return "{!!_('You can only select :number items')!!} ".replace(':number', limit);
+                                    return "{{trans('form-builder::form.you_can_only_select_n_items')}}".replace(':number', limit);
                                 },
                                 formatLoadMore: function (pageNumber) {
-                                    return "{!!_('Loading...')!!} ";
+                                    return "{{trans('form-builder::form.loading')}}";
                                 },
                                 formatSearching: function () {
-                                    return "{!!_('Searching...')!!} ";
+                                    return "{{trans('form-builder::form.searching')}}";
                                 },
                                 ajax: {
                                     url: "{!! (!empty($options['action']))?$options['action']:'' !!} ",

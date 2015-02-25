@@ -16,9 +16,10 @@
                     <?php $options['attr']['class'] .= ' datepicker'; ?>
                         @if($options['range'])
                             <?php $options['attr']['class'] .= ' input-sm'; ?>
-                            <div id="{!!$id!!} " class="input-daterange input-group">
+                            <?php unset($options['attr']['id']); ?>
+                            <div id="{{$id}}" class="input-daterange input-group">
                                 {!! Form::input($type, $name.'[start]', $options['default_value'], $options['attr']) !!}
-                                <span class="input-group-addon">{!!_('to')!!} </span>
+                                <span class="input-group-addon">{{trans('form-builder::form.to')}}</span>
                                 {!! Form::input($type, $name.'[end]', $options['default_value'], $options['attr']) !!}
                             </div>
                         @else
@@ -28,12 +29,13 @@
                     <script type="text/javascript">
 
                         jQuery(document).ready(function () {
+
                             @if($options['range'])
-                                jQuery("#{!! $id !!}  .input-sm")
+                                jQuery("#{!! $id !!} .input-sm")
                             @else
                                 jQuery("input[name='{!!$name!!} ']")
                              @endif.datepicker({
-                                format: '{!!$options['format']!!} ',
+                                format: '{!!$options['format']!!}',
                                 @if($options['todayHighlight'])
                                 todayHighlight: true,
                                 @endif
@@ -49,12 +51,11 @@
                                 var startDate = new Date(selected.date.valueOf());
                                 startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
 
-                                if(jQuery(this).attr('name') == '{!!$name.'[end]'!!} '){
-                                    jQuery('input[name="{!!$name.'[start]'!!} "]').datepicker('setStartDate', startDate);
+                                if(jQuery(this).attr('name') == '{{$name.'[end]'}}'){
+                                    jQuery('input[name="{{$name.'[start]'}}"]').datepicker('setEndDate', startDate);
                                 }else{
-                                    jQuery('input[name="{!!$name.'[end]'!!} "]').datepicker('setStartDate', startDate);
+                                    jQuery('input[name="{{$name.'[end]'}}"]').datepicker('setStartDate', startDate);
                                 }
-
 
                             });
                         });

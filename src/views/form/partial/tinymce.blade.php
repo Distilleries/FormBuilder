@@ -35,7 +35,7 @@
         <script type="text/javascript">
             jQuery(document).ready(function(){
                 tinymce.init({
-                    selector: ".{!!$id!!} ",
+                    selector: ".{!!$id!!}",
                     plugins: [
                         "{!!!empty($options['moxiemanager'])?'moxiemanager':''!!}  advlist autolink lists link image charmap hr anchor pagebreak",
                         "searchreplace wordcount visualblocks visualchars code fullscreen",

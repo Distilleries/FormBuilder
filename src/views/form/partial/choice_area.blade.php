@@ -14,12 +14,12 @@
                     <label>
                      {!! Form::radio($header['id'], 1, false, [
                             'class'=>'icheck check-all',
-                      ]) !!}  {!! _('All') !!}
+                      ]) !!}  {{trans('form-builder::form.all')}}
                     </label>
                     <label>
                      {!! Form::radio($header['id'], 0, false, [
                             'class'=>'icheck uncheck-all',
-                      ]) !!}   {!! _('None') !!}
+                      ]) !!}  {{trans('form-builder::form.none')}}
                     </label>
                 </div>
             </div>
