@@ -42,14 +42,6 @@ class FormValidator extends FormView {
             unset($options['validation']);
         }
 
-        if ($type == 'choice' && !isset($options['selected']))
-        {
-            if (isset($this->model->{$name}))
-            {
-                $options['selected'] = $this->model->{$name};
-            }
-        }
-
         return parent::add($name, $type, $options, $modify);
     }
 

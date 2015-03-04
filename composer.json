@@ -16,8 +16,16 @@
     "illuminate/filesystem": "5.*",
     "kris/laravel-form-builder": "1.*"
   },
+  "require-dev": {
+    "orchestra/database": "~3.0",
+    "orchestra/testbench": "~3.0",
+    "phpunit/phpunit": "~4.5",
+    "mockery/mockery": "0.9.*",
+    "fzaninotto/faker": "1.4.*"
+  },
   "autoload": {
     "classmap": [
+      "tests"
     ],
     "psr-4": {
       "Distilleries\\FormBuilder\\": "src/Distilleries/FormBuilder"
