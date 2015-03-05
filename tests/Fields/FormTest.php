@@ -23,5 +23,4 @@ class FormTest extends FieldTestCase {
         }
 
     }
-
 }
