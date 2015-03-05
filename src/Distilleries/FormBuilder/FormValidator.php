@@ -21,6 +21,14 @@ class FormValidator extends FormView {
     // ------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------
 
+    /**
+     * @param string $name
+     * @param string $type
+     * @param array $options
+     * @param bool $modify
+     * @param bool $noOveride
+     * @return $this
+     */
     public function add($name, $type = 'text', array $options = [], $modify = false, $noOveride = false)
     {
 

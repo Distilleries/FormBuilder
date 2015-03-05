@@ -11,7 +11,6 @@ class Tag extends FormFieldsView {
     protected function getDefaults()
     {
         return [
-            //'maximumInputLength'     => -1,
             'default_value'          => []
         ];
     }

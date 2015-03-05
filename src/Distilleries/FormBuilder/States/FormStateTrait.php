@@ -10,6 +10,7 @@ trait FormStateTrait {
      * Injected by the constructor
      */
     protected $form;
+    protected $model;
 
 
     // ------------------------------------------------------------------------------------------------
