@@ -107,7 +107,7 @@
                                     return clazz;
                                 },
                                 formatNoMatches: function () {
-                                    return "{{trans('form-builder::form.no_result)}}";
+                                    return "{{trans('form-builder::form.no_result')}}";
                                 },
                                 formatInputTooShort: function (input, min) {
                                     var n = min - input.length;

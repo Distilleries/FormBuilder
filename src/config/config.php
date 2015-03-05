@@ -30,6 +30,7 @@ return [
 
     'custom_fields'  => [
         'button'         => 'Distilleries\FormBuilder\Fields\ButtonType',
+        'radio'          => 'Distilleries\FormBuilder\Fields\CheckableType',
         'checkbox'       => 'Distilleries\FormBuilder\Fields\CheckableType',
         'text'           => 'Distilleries\FormBuilder\Fields\InputType',
         'email'          => 'Distilleries\FormBuilder\Fields\InputType',

@@ -7,7 +7,7 @@
        @if ($showLabel)
          {!! $options['label'].': ' !!}
        @endif
-       <span class="label label-{!! $options['checked']?'success':'danger' !!} ">{!! \Verdikt\Helpers\StaticLabel::yesNo($options['checked']) !!} </span>
+       <span class="label label-{!! $options['checked']?'success':'danger' !!} ">{!! \Distilleries\FormBuilder\Helpers\StaticLabel::yesNo($options['checked']) !!} </span>
    </div>
    @if ($showLabel && $showField && !$options['is_child'])
        </div>

@@ -43,6 +43,7 @@ class FieldController extends \Illuminate\Routing\Controller {
 
         foreach ($fields as $name => $field)
         {
+
             $form->add($name, $field['type'],$field['options']);
         }
 

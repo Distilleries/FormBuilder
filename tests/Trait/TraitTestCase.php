@@ -43,6 +43,25 @@ abstract class TraitTestCase extends FormTestCase {
 }
 
 
+use Distilleries\FormBuilder\FormValidator;
+
+class TestForm extends FormValidator
+{
+    public static $rules        = [];
+    public static $rules_update = null;
+
+    public function buildForm()
+    {
+        $this
+            ->add('id', 'hidden')
+            ->add('name', 'text')
+            ->add('email', 'email');
+
+        $this->addDefaultActions();
+    }
+}
+
+
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -67,7 +86,7 @@ class FormController extends \Illuminate\Routing\Controller implements \Distille
 
     use \Distilleries\FormBuilder\States\FormStateTrait;
 
-    public function __construct(User $model, \App\TestForm $form)
+    public function __construct(User $model, TestForm $form)
     {
         $this->model = $model;
         $this->form  = $form;
@@ -176,8 +195,6 @@ class FormController extends \Illuminate\Routing\Controller implements \Distille
 
 }
 
-
-use Distilleries\FormBuilder\FormValidator;
 
 
 class TestValidatorForm extends FormValidator {
