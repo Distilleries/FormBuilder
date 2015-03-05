@@ -31,11 +31,13 @@ class FieldController extends \Illuminate\Routing\Controller {
     public function postIndex(Request $request)
     {
         $model = $this->model;
-        $form  = \FormBuilder::plain([
+
+        $form = app('Distilleries\FormBuilder\FormValidator')
+        ->setFormHelper(app('laravel-form-helper'))
+        ->setFormBuilder(new  Kris\LaravelFormBuilder\FormBuilder(app(),app('laravel-form-helper')))
+        ->setFormOptions([
             'model' => $model
         ]);
-
-        dd(get_class($form));
 
         $fields = $request->get('fields');
 
@@ -44,7 +46,7 @@ class FieldController extends \Illuminate\Routing\Controller {
             $form->add($name, $field['type'],$field['options']);
         }
 
-        $form_content = view('form-builder::form.components.formgenerator.full', [
+        $form_content = view('form-builder::form.components.formgenerator.info_all', [
             'form' => $form
         ]);
 
