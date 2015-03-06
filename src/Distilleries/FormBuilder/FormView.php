@@ -30,6 +30,14 @@ class FormView extends Form {
 
         }
 
+        if ($type == 'choice' && !isset($options['selected']))
+        {
+            if (isset($this->model->{$name}))
+            {
+                $options['selected'] = $this->model->{$name};
+            }
+        }
+
         return parent::add($name, $type, $options, $modify);
     }
 

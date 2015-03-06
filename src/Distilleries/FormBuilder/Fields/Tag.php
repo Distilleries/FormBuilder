@@ -6,4 +6,12 @@ class Tag extends FormFieldsView {
     {
         return 'tag';
     }
+
+
+    protected function getDefaults()
+    {
+        return [
+            'default_value'          => []
+        ];
+    }
 }

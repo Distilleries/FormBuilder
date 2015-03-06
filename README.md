@@ -1,4 +1,6 @@
 [![Code quality](http://img.shields.io/scrutinizer/g/distilleries/formbuilder.svg?style=flat)](https://scrutinizer-ci.com/g/distilleries/formbuilder/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Distilleries/FormBuilder/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Distilleries/FormBuilder/?branch=master)
+[![Build Status](https://travis-ci.org/Distilleries/FormBuilder.svg)](https://travis-ci.org/Distilleries/FormBuilder)
 [![Total Downloads](https://img.shields.io/packagist/dt/distilleries/form-builder.svg?style=flat)](https://packagist.org/packages/distilleries/form-builder)
 [![Latest Stable Version](https://img.shields.io/packagist/v/distilleries/form-builder.svg?style=flat)](https://packagist.org/packages/distilleries/form-builder)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)

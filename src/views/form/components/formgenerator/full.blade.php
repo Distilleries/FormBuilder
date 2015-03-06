@@ -4,7 +4,7 @@
         <div class="portlet box yellow">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="glyphicon glyphicon-pencil"></i>{{_('Detail')}}
+                    <i class="glyphicon glyphicon-pencil"></i>{{trans('form-builder::form.detail')}}
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"></a>

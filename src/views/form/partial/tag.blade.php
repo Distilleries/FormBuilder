@@ -39,7 +39,7 @@
         <script type="text/javascript">
         jQuery(document).ready(function(){
                 $("#{!!$name!!} ").select2({
-                  tags:[{!!(empty($options['default_value'])?'':$options['default_value'])!!} ],
+                  tags:[{!!(empty($options['default_value'])?'':$options['default_value'])!!}],
                   @if(!empty($options['maximumInputLength']))
                     maximumInputLength: {!!$options['maximumInputLength']!!}
                   @endif

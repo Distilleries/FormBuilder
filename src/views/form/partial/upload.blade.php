@@ -31,7 +31,7 @@
                                               no_host: true
                                               });">
                                   <i class="glyphicon glyphicon-upload"></i>
-                                  <span>{!! _('Pick file') !!} </span>
+                                  <span>{{trans('form-builder::form.pick_file')}}</span>
                               </button>
                             </span>
                         </div>

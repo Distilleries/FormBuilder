@@ -21,6 +21,14 @@ class FormValidator extends FormView {
     // ------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------
 
+    /**
+     * @param string $name
+     * @param string $type
+     * @param array $options
+     * @param bool $modify
+     * @param bool $noOveride
+     * @return $this
+     */
     public function add($name, $type = 'text', array $options = [], $modify = false, $noOveride = false)
     {
 
@@ -40,14 +48,6 @@ class FormValidator extends FormView {
 
             $options['attr']['class'] .= ' validate['.$options['validation'].']'.' ';
             unset($options['validation']);
-        }
-
-        if ($type == 'choice' && !isset($options['selected']))
-        {
-            if (isset($this->model->{$name}))
-            {
-                $options['selected'] = $this->model->{$name};
-            }
         }
 
         return parent::add($name, $type, $options, $modify);
@@ -120,14 +120,14 @@ class FormValidator extends FormView {
     {
         $this->add('submit', 'submit',
             [
-                'label' => _('Save'),
+                'label' => trans('form-builder::form.save'),
                 'attr'  => [
                     'class' => 'btn green'
                 ],
             ], false, true)
             ->add('back', 'button',
                 [
-                    'label' => _('Back'),
+                    'label' => trans('form-builder::form.back'),
                     'attr'  => [
                         'class'   => 'btn default',
                         'onclick' => 'window.history.back()'

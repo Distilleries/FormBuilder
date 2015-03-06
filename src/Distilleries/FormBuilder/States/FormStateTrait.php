@@ -1,8 +1,7 @@
 <?php namespace Distilleries\FormBuilder\States;
 
 use \FormBuilder;
-use \Request;
-use \Redirect;
+use Illuminate\Http\Request;
 
 trait FormStateTrait {
 
@@ -11,11 +10,6 @@ trait FormStateTrait {
      * Injected by the constructor
      */
     protected $form;
-
-    /**
-     * @var \Illuminate\Database\Eloquent\Model $model
-     * Injected by the constructor
-     */
     protected $model;
 
 
@@ -41,7 +35,7 @@ trait FormStateTrait {
 
     // ------------------------------------------------------------------------------------------------
 
-    public function postEdit()
+    public function postEdit(Request $request)
     {
         $form = FormBuilder::create(get_class($this->form), [
             'model' => $this->model
@@ -60,22 +54,22 @@ trait FormStateTrait {
             return $result;
         }
 
-        $result = $this->save($this->dataToSave());
+        $result = $this->save($this->dataToSave($request), $request);
 
         if ($result != null)
         {
             return $result;
         }
 
-        return Redirect::to(action($this->getControllerNameForAction().'@getIndex'));
+        return redirect()->to(action($this->getControllerNameForAction().'@getIndex'));
 
     }
 
     // ------------------------------------------------------------------------------------------------
 
-    protected function dataToSave()
+    protected function dataToSave(Request $request)
     {
-        return Request::only($this->model->getFillable());
+        return $request->only($this->model->getFillable());
     }
 
     // ------------------------------------------------------------------------------------------------
@@ -95,10 +89,10 @@ trait FormStateTrait {
 
     // ------------------------------------------------------------------------------------------------
 
-    protected function save($data)
+    protected function save($data, Request $request)
     {
 
-        $primary = Request::get($this->model->getKeyName());
+        $primary = $request->get($this->model->getKeyName());
         if (empty($primary))
         {
             $this->model = $this->model->create($data);
@@ -138,14 +132,8 @@ trait FormStateTrait {
 
     protected function getControllerNameForAction() {
 
-        $namespace = \Route::current()->getAction()['namespace'];
-        $action    = explode('@', \Route::currentRouteAction());
+        $action = explode('@', \Route::currentRouteAction());
 
-        if (!empty($namespace))
-        {
-            $action[0] = ltrim(str_replace($namespace, '', $action[0]), '\\');
-        }
-
-        return $action[0];
+        return '\\'.$action[0];
     }
 }
