@@ -54,7 +54,7 @@ trait FormStateTrait {
             return $result;
         }
 
-        $result = $this->save($this->dataToSave($request),$request);
+        $result = $this->save($this->dataToSave($request), $request);
 
         if ($result != null)
         {
@@ -132,7 +132,7 @@ trait FormStateTrait {
 
     protected function getControllerNameForAction() {
 
-        $action    = explode('@', \Route::currentRouteAction());
+        $action = explode('@', \Route::currentRouteAction());
 
         return '\\'.$action[0];
     }
