@@ -11,7 +11,7 @@ class Tag extends FormFieldsView {
     protected function getDefaults()
     {
         return [
-            'default_value'          => []
+            'default_value'          => ''
         ];
     }
 }
