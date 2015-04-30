@@ -1,7 +1,7 @@
 tools:
     external_code_coverage:
         timeout: 18000  # How long should we wait for code coverage (in seconds).
-        runs: 3        # In how many runs have you split your tests?
+        runs: 4        # In how many runs have you split your tests?
 filter:
     excluded_paths:
         - tests/*
