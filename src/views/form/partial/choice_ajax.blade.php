@@ -100,9 +100,7 @@
                         '_token': jQuery("input[name='_token']").val()
                     }
                 }).done(function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        callback(data[i]);
-                    }
+                    callback(data);
                 });
             }
         },
