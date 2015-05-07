@@ -100,7 +100,13 @@
                         '_token': jQuery("input[name='_token']").val()
                     }
                 }).done(function (data) {
-                    callback(data);
+                    if({!! $options['multiple'] !!}){
+                        callback(data);
+                    }else{
+                        for (var i = 0; i < data.length; i++) {
+                            callback(data[i]);
+                        }
+                    }
                 });
             }
         },
