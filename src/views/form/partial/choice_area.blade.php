@@ -41,7 +41,7 @@
                                     @foreach($choice as $ch)
                                         <label>
                                         {!! Form::checkbox($name.'['.$header['id'].'][]', $ch['id'], in_array($ch['id'],$options['selected'][$header['id']]), [
-                                            'class'=>'icheck',
+                                            'class'=>'icheck selectore-choice-area-js',
                                             'data-checkbox'=>(in_array($ch['id'],$options['selected'][$header['id']]))?'icheckbox_line-blue':'icheckbox_line-grey',
                                             'data-label'=>$ch['libelle'],
                                         ]) !!}
