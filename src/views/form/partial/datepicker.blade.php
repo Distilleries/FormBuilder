@@ -33,7 +33,7 @@
                             @if($options['range'])
                                 jQuery("#{!! $id !!} .input-sm")
                             @else
-                                jQuery("input[name='{!!$name!!} ']")
+                                jQuery("input[name='{!!$name!!}']")
                              @endif.datepicker({
                                 format: '{!!$options['format']!!}',
                                 @if($options['todayHighlight'])
