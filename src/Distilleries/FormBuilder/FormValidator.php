@@ -75,7 +75,7 @@ class FormValidator extends FormView {
                 if ($field->getType() == 'form')
                 {
 
-                    $validation = Validator::make($this->formHelper->getRequest()->get($field->getName()), $field->getClass()->getRules());
+                    $validation = Validator::make($this->formHelper->getRequest()->get($field->getName(),[]), $field->getClass()->getRules());
 
                     if ($validation->fails())
                     {
