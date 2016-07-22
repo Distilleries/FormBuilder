@@ -3,12 +3,11 @@
 
 @endif
 @if($showLabel)
-
     <div class="portlet light unbordered">
         <div class="portlet-title">
             <div class="caption">
                 @if(isset($options['icon']))
-                    <i class="glyphicon glyphicon-{!!$options['icon']!!} "></i>
+                    <i class="glyphicon glyphicon-{{$options['icon']}}"></i>
                 @endif
                 <span class="caption-subject bold uppercase font-yellow"> {!!$options['label']!!} </span>
             </div>

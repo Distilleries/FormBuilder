@@ -1,3 +1,10 @@
+<?php
+
+if(empty($formOptions['url'])){
+    $formOptions['url'] = config('app.url').'/'.request()->path();
+}
+
+?>
 @if ($showStart)
     @if($model && $model->exists)
         {!! Form::model($model, $formOptions) !!}

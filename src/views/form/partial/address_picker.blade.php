@@ -39,25 +39,25 @@
 <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
 <script>
     jQuery(document).ready(function(){
-        jQuery('#{!!$uniqId!!} -map').locationpicker({
+        jQuery('#{{$uniqId}}-map').locationpicker({
             location: {
-                latitude: {!!$options['default_value']['lat']!!} ,
-                longitude: {!!$options['default_value']['lng']!!}
+                latitude: {{$options['default_value']['lat']}} ,
+                longitude: {{$options['default_value']['lng']}}
             },
             radius: 0,
             @if(empty($noEdit))
             inputBinding: {
-                latitudeInput: jQuery('input[name="{!!$name.'[lat]'!!}"]'),
-                longitudeInput: jQuery('input[name="{!!$name.'[lng]'!!}"]'),
-                locationNameInput: jQuery('input[name="{!!$name.'[default]'!!}"]')
+                latitudeInput: jQuery('input[name="{{$name.'[lat]'}}"]'),
+                longitudeInput: jQuery('input[name="{{$name.'[lng]'}}"]'),
+                locationNameInput: jQuery('input[name="{{$name.'[default]'}}"]')
             },
             onchanged: function (currentLocation, radius, isMarkerDropped) {
                 var addressComponents = $(this).locationpicker('map').location.addressComponents;
-                jQuery('input[name="{!!$name.'[street]'!!}"]').val(addressComponents.addressLine1);
-                jQuery('input[name="{!!$name.'[city]'!!}"]').val(addressComponents.city);
-                jQuery('input[name="{!!$name.'[state]'!!}"]').val(addressComponents.stateOrProvince);
-                jQuery('input[name="{!!$name.'[zip]'!!} "]').val(addressComponents.postalCode);
-                jQuery('input[name="{!!$name.'[country]'!!}"]').val(addressComponents.country);
+                jQuery('input[name="{{$name.'[street]'}}"]').val(addressComponents.addressLine1);
+                jQuery('input[name="{{$name.'[city]'}}"]').val(addressComponents.city);
+                jQuery('input[name="{{$name.'[state]'}}"]').val(addressComponents.stateOrProvince);
+                jQuery('input[name="{{$name.'[zip]'}} "]').val(addressComponents.postalCode);
+                jQuery('input[name="{{$name.'[country]'}}"]').val(addressComponents.country);
             },
             @endif
            enableAutocomplete: true

@@ -31,9 +31,9 @@
     <script type="text/javascript">
         jQuery(document).ready(function(){
             tinymce.init({
-                selector: ".{!!$id!!}",
+                selector: ".{{$id}}",
                 plugins: [
-                    "{!!!empty($options['moxiemanager'])?'moxiemanager':''!!}  advlist autolink lists link image charmap hr anchor pagebreak",
+                    "{{empty($options['moxiemanager'])?'moxiemanager':''}}  advlist autolink lists link image charmap hr anchor pagebreak",
                     "searchreplace wordcount visualblocks visualchars code fullscreen",
                     "insertdatetime media nonbreaking save table contextmenu directionality",
                     "emoticons template paste textcolor colorpicker textpattern"
@@ -43,10 +43,9 @@
                 image_advtab: true,
                 relative_urls: false,
                 body_class: "content",
-
                 @if(!empty($options['moxiemanager']))
                 external_plugins: {
-                    "moxiemanager": "{!!$options['moxiemanager']!!} "
+                    "moxiemanager": "{{config('app.url')}}{{$options['moxiemanager']}}"
                 },
                 @endif
                 templates: [
