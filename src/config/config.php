@@ -1,35 +1,36 @@
 <?php
 
 return [
-    'defaults'          => [
+    'defaults'           => [
         'wrapper_class'       => 'form-group',
         'wrapper_error_class' => 'has-error',
         'label_class'         => 'control-label',
         'field_class'         => 'form-control',
-        'error_class'         => 'help-block text-danger'
+        'error_class'         => 'help-block text-danger',
     ],
-    'moxy_manager_path' => '/assets/moxiemanager/plugin.min.js',
+    'moxy_manager_path'  => '/assets/moxiemanager/plugin.min.js',
+    'api_google_map_key' => env('GOOGLE_MAP_JS_API_KEY'),
     // Templates
-    'form'              => 'form-builder::form.partial.form',
-    'text'              => 'form-builder::form.partial.text',
-    'textarea'          => 'form-builder::form.partial.textarea',
-    'button'            => 'form-builder::form.partial.button',
-    'radio'             => 'form-builder::form.partial.radio',
-    'checkbox'          => 'form-builder::form.partial.checkbox',
-    'select'            => 'form-builder::form.partial.select',
-    'choice'            => 'form-builder::form.partial.choice',
-    'repeated'          => 'form-builder::form.partial.repeated',
-    'child_form'        => 'form-builder::form.partial.child_form',
-    'tinymce'           => 'form-builder::form.partial.tinymce',
-    'tag'               => 'form-builder::form.partial.tag',
-    'choice_area'       => 'form-builder::form.partial.choice_area',
-    'address_picker'    => 'form-builder::form.partial.address_picker',
-    'choice_ajax'       => 'form-builder::form.partial.choice_ajax',
-    'datepicker'        => 'form-builder::form.partial.datepicker',
-    'upload'            => 'form-builder::form.partial.upload',
-    'matrix'            => 'form-builder::form.partial.matrix',
-    'choice_area_ajax'  => 'form-builder::form.partial.choice_area_ajax',
-    'folder_chooser'    => 'form-builder::form.partial.folder_chooser',
+    'form'               => 'form-builder::form.partial.form',
+    'text'               => 'form-builder::form.partial.text',
+    'textarea'           => 'form-builder::form.partial.textarea',
+    'button'             => 'form-builder::form.partial.button',
+    'radio'              => 'form-builder::form.partial.radio',
+    'checkbox'           => 'form-builder::form.partial.checkbox',
+    'select'             => 'form-builder::form.partial.select',
+    'choice'             => 'form-builder::form.partial.choice',
+    'repeated'           => 'form-builder::form.partial.repeated',
+    'child_form'         => 'form-builder::form.partial.child_form',
+    'tinymce'            => 'form-builder::form.partial.tinymce',
+    'tag'                => 'form-builder::form.partial.tag',
+    'choice_area'        => 'form-builder::form.partial.choice_area',
+    'address_picker'     => 'form-builder::form.partial.address_picker',
+    'choice_ajax'        => 'form-builder::form.partial.choice_ajax',
+    'datepicker'         => 'form-builder::form.partial.datepicker',
+    'upload'             => 'form-builder::form.partial.upload',
+    'matrix'             => 'form-builder::form.partial.matrix',
+    'choice_area_ajax'   => 'form-builder::form.partial.choice_area_ajax',
+    'folder_chooser'     => 'form-builder::form.partial.folder_chooser',
 
     'custom_fields' => [
         'button'           => 'Distilleries\FormBuilder\Fields\ButtonType',
@@ -52,5 +53,5 @@ return [
         'folder_chooser'   => 'Distilleries\FormBuilder\Fields\FolderChooser',
         'matrix'           => 'Distilleries\FormBuilder\Fields\Matrix',
         'choice_area_ajax' => 'Distilleries\FormBuilder\Fields\ChoiceAreaAjax',
-    ]
+    ],
 ];

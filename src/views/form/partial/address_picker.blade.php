@@ -36,7 +36,7 @@
 @if ($showLabel && $showField && !$options['is_child'])
 </div>
 @endif
-<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places&key={{config('form-builder.api_google_map_key')}}'></script>
 <script>
     jQuery(document).ready(function(){
         jQuery('#{{$uniqId}}-map').locationpicker({
