@@ -34,10 +34,39 @@ abstract class TraitTestCase extends FormTestCase {
 
         parent::getEnvironmentSetUp($app);
 
-        $app['router']->controller('form', 'FormController');
-        $app['router']->controller('validator', 'ValidationFormController');
-        $app['router']->controller('save', 'SaveFormController');
-        $app['router']->controller('save-after', 'AfterSaveFormController');
+        $app['router']->get('form','FormController@getIndex');
+        $app['router']->get('form/edit-selected/{id?}','FormController@getEditSelected');
+        $app['router']->post('form/edit-sub-form/{id?}','FormController@postEditSubForm');
+        $app['router']->post('form/search','FormController@postSearch');
+
+
+        $app['router']->get('form/edit/{id?}','FormController@getEdit');
+        $app['router']->post('form/edit/{id?}','FormController@postEdit');
+        $app['router']->get('form/view/{id?}','FormController@getView');
+        $app['router']->get('form/controller-name-for-action','FormController@getControllerNameForAction');
+
+
+        $app['router']->get('validator','ValidationFormController@getIndex');
+        $app['router']->get('validator/update-rules','ValidationFormController@getUpdateRules');
+        $app['router']->get('validator/edit/{id?}','ValidationFormController@getEdit');
+        $app['router']->post('validator/edit/{id?}','ValidationFormController@postEdit');
+        $app['router']->get('validator/view/{id?}','ValidationFormController@getView');
+        $app['router']->get('validator/view-all/{id?}','ValidationFormController@getViewAll');
+        $app['router']->get('validator/controller-name-for-action','ValidationFormController@getControllerNameForAction');
+
+
+        $app['router']->get('save','SaveFormController@getIndex');
+        $app['router']->get('save/edit/{id?}','SaveFormController@getEdit');
+        $app['router']->post('save/edit/{id?}','SaveFormController@postEdit');
+        $app['router']->get('save/view/{id?}','SaveFormController@getView');
+        $app['router']->get('save/controller-name-for-action','SaveFormController@getControllerNameForAction');
+
+        $app['router']->get('save-after','AfterSaveFormController@getIndex');
+        $app['router']->get('save-after/edit/{id?}','AfterSaveFormController@getEdit');
+        $app['router']->post('save-after/edit/{id?}','AfterSaveFormController@postEdit');
+        $app['router']->get('save-after/view/{id?}','AfterSaveFormController@getView');
+        $app['router']->get('save-after/controller-name-for-action','AfterSaveFormController@getControllerNameForAction');
+
 
     }
 }
@@ -384,7 +413,7 @@ class AfterSaveFormController extends \Illuminate\Routing\Controller implements 
 
     protected function afterSave()
     {
-        return redirect()->to(action($this->getControllerNameForAction().'@getIndex'));
+        return redirect(action($this->getControllerNameForAction().'@getIndex'));
     }
 
 }

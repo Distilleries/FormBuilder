@@ -1,6 +1,5 @@
 <?php
 
-use Mockery;
 
 abstract class FormTestCase extends \Orchestra\Testbench\TestCase
 {
@@ -28,14 +27,14 @@ abstract class FormTestCase extends \Orchestra\Testbench\TestCase
     }
 
 
-    protected function getPackageProviders()
+    protected function getPackageProviders($application)
     {
         return [
             'Distilleries\FormBuilder\FormBuilderServiceProvider'
         ];
     }
 
-    protected function getPackageAliases()
+    protected function getPackageAliases($application)
     {
         return [
             'FormBuilder'   => 'Distilleries\FormBuilder\Facades\FormBuilder'

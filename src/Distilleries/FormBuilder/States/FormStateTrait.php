@@ -61,7 +61,7 @@ trait FormStateTrait {
             return $result;
         }
 
-        return redirect()->to(action($this->getControllerNameForAction().'@getIndex'));
+        return redirect(action($this->getControllerNameForAction().'@getIndex'));
 
     }
 

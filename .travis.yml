@@ -1,10 +1,9 @@
 language: php
 
 php:
-  - 5.5.9
-  - 5.5
   - 5.6
-  - 7
+  - 7.0
+  - 7.1
 
 env:
   global:
@@ -12,21 +11,25 @@ env:
 
 matrix:
   include:
-    - php: 5.5.9
+    - php: 5.6
       env: setup=lowest
-    - php: 5.5.9
+    - php: 5.6
       env: setup=stable
-
 sudo: false
 
+services:
+  - memcached
+  - redis-server
+
 before_install:
-  - if [[ $TRAVIS_PHP_VERSION =~ ^7 ]]; then phpenv config-rm xdebug.ini; fi
-  - composer self-update
+  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
+  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - travis_retry composer self-update
 
 install:
-  - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-source; fi
-  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-stable; fi
-  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-lowest --prefer-stable; fi
+  - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-dist --no-suggest; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable --no-suggest; fi
 
 script:
   - >
@@ -36,9 +39,14 @@ script:
      phpunit --configuration phpunit.xml --coverage-clover=coverage.clover
     fi
 
+matrix:
+  allow_failures:
+    - php: 7.1
+  fast_finish: true
+
 after_script:
- - wget https://scrutinizer-ci.com/ocular.phar
- - php ocular.phar code-coverage:upload --access-token="9857f9bb4b1c260b94eb773a541d6e42e05db0db45d5a25757590276d5e50445" --format=php-clover coverage.clover
+- wget https://scrutinizer-ci.com/ocular.phar
+- php ocular.phar code-coverage:upload --access-token="9857f9bb4b1c260b94eb773a541d6e42e05db0db45d5a25757590276d5e50445" --format=php-clover coverage.clover
 
 notifications:
-  slack: big-boss-studio:vLrsJ3hpqgIYugU7IKLMUwj2
+slack: big-boss-studio:vLrsJ3hpqgIYugU7IKLMUwj2

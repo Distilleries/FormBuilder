@@ -1,4 +1,4 @@
-@if(is_object($errors) and $errors->has() and !empty($errors->all()))
+@if(is_object($errors) and $errors->count() and !empty($errors->all()))
 <div class="alert alert-danger alert-dismissible">
     <button class="close" data-dismiss="alert"></button>
     <ul>
