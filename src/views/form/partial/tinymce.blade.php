@@ -1,5 +1,6 @@
 <?php $id = uniqid(); ?>
 @if ($showLabel && $showField)
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <div {!! $options['wrapperAttrs']!!}  >
         @endif
 
@@ -32,6 +33,7 @@
         jQuery(document).ready(function(){
             tinymce.init({
                 selector: ".{{$id}}",
+                themes: "modern",
                 plugins: [
                     "{{empty($options['moxiemanager'])?'moxiemanager':''}}  advlist autolink lists link image charmap hr anchor pagebreak",
                     "searchreplace wordcount visualblocks visualchars code fullscreen",
