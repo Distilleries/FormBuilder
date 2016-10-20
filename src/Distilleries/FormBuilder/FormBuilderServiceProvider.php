@@ -1,7 +1,7 @@
 <?php namespace Distilleries\FormBuilder;
 
-use Illuminate\Html\HtmlBuilder;
-use Illuminate\Html\FormBuilder as LaravelForm;
+use Collective\Html\HtmlBuilder;
+use Collective\Html\FormBuilder as LaravelForm;
 use Kris\LaravelFormBuilder\FormHelper;
 use Illuminate\Foundation\AliasLoader;
 
@@ -82,8 +82,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
         if (!$this->app->offsetExists('form')) {
 
             $this->app->singleton('form', function($app) {
-
-                $form = new LaravelForm($app['html'], $app['url'], $app['session.store']->getToken());
+                $form = new LaravelForm($app['html'], $app['url'], $app['view'], $app['session.store']->getToken());
 
                 return $form->setSessionStore($app['session.store']);
             });
@@ -92,7 +91,7 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
 
                 AliasLoader::getInstance()->alias(
                     'Form',
-                    'Illuminate\Html\FormFacade'
+                    'Collective\Html\FormFacade'
                 );
             }
         }
@@ -108,14 +107,14 @@ class FormBuilderServiceProvider extends \Kris\LaravelFormBuilder\FormBuilderSer
         if (!$this->app->offsetExists('html')) {
 
             $this->app->singleton('html', function($app) {
-                return new HtmlBuilder($app['url']);
+                return new HtmlBuilder($app['url'], $app['view']);
             });
 
             if (! $this->aliasExists('Html')) {
 
                 AliasLoader::getInstance()->alias(
                     'Html',
-                    'Illuminate\Html\HtmlFacade'
+                    'Collective\Html\HtmlFacade'
                 );
             }
         }
