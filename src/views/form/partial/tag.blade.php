@@ -1,6 +1,7 @@
 @if ($showLabel and $showField)
     <div {!! $options['wrapperAttrs'] !!}>
 @endif
+
         @if ($showLabel)
             <?php $options['label_attr']['class'] .= ' col-md-3'; ?>
             {!! Form::label($name, $options['label'], $options['label_attr']) !!}
@@ -49,7 +50,7 @@
                         maximumInputLength: {{ $options['maximumInputLength'] }}
                     @endif
                 });
-            })
+            });
         </script>
     @endif
 @endif

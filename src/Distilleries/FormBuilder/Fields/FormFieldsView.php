@@ -19,6 +19,10 @@ abstract class FormFieldsView extends FormField {
             return '';
         }
 
+        if (isset($options['default_value'])) {
+            $options['value'] = $options['default_value'];
+        }
+
         return $this->formHelper->getView()->make(
             $this->template, [
                 'name'      => $this->name,
