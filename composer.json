@@ -14,7 +14,7 @@
     "illuminate/support": "5.3.*",
     "illuminate/html": "5.*",
     "illuminate/filesystem": "5.3.*",
-    "kris/laravel-form-builder": "1.4.*"
+    "kris/laravel-form-builder": "1.5.*"
   },
   "require-dev": {
     "orchestra/database": "~3.3",
