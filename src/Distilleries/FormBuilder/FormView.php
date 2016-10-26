@@ -2,8 +2,7 @@
 
 use Kris\LaravelFormBuilder\Form;
 
-class FormView extends Form
-{
+class FormView extends Form {
 
 
     // ------------------------------------------------------------------------------------------------
@@ -11,36 +10,36 @@ class FormView extends Form
     // ------------------------------------------------------------------------------------------------
 
     public function add($name, $type = 'text', array $options = [], $modify = false, $noOveride = false)
-{
+    {
 
 
-    if (!isset($options['noInEditView'])) {
-        $options['noInEditView'] = false;
-    }
-
-
-    if (!empty($options) && empty($options['default_value']) && !empty($options['value'])) {
-        $options['default_value'] = $options['value'];
-    }
-
-
-    if (!empty($this->formOptions) && !empty($this->formOptions['do_not_display_' . $name]) && $this->formOptions['do_not_display_' . $name] === true) {
-        $type = 'hidden';
-
-        if (!empty($options) && !empty($options['selected'])) {
-            $options['default_value'] = $options['selected'];
+        if (!isset($options['noInEditView']))
+        {
+            $options['noInEditView'] = false;
         }
 
-    }
 
-    if ($type == 'choice' && !isset($options['selected'])) {
-        if (isset($this->model->{$name})) {
-            $options['selected'] = $this->model->{$name};
+        if (!empty($this->formOptions) && !empty($this->formOptions['do_not_display_'.$name]) && $this->formOptions['do_not_display_'.$name] === true)
+        {
+            $type = 'hidden';
+
+            if (!empty($options) && !empty($options['selected']))
+            {
+                $options['default_value'] = $options['selected'];
+            }
+
         }
-    }
 
-    return parent::add($name, $type, $options, $modify);
-}
+        if ($type == 'choice' && !isset($options['selected']))
+        {
+            if (isset($this->model->{$name}))
+            {
+                $options['selected'] = $this->model->{$name};
+            }
+        }
+
+        return parent::add($name, $type, $options, $modify);
+    }
 
     // ------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------

@@ -14,7 +14,6 @@
             @if ($showField)
                 @if (isset($noEdit) and $noEdit === true)
                     <?php
-                    $options['default_value'] = [];
                     if (! empty($options['default_value'])) {
                         $options['default_value'] = is_string($options['default_value']) ? explode(',', $options['default_value']) : $options['default_value'];
                     }
