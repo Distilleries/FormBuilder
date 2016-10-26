@@ -11,7 +11,7 @@ abstract class TraitTestCase extends FormTestCase {
 
         parent::setUp();
 
-        $this->app['Illuminate\Contracts\Console\Kernel']->call('form:make', [
+        $this->app['Illuminate\Contracts\Console\Kernel']->call('make:form', [
             'name'     => 'TestForm',
             '--fields' => 'id:hidden, name:text, email:email',
         ]);
