@@ -92,7 +92,7 @@ Creating form classes is easy.
 With a simple artisan command I can create form:
 
 ``` sh
-    php artisan form:make Forms/PostForm
+    php artisan make:form Forms/PostForm
 ```
 
 you create form class in path `app/Forms/PostForm.php` that looks like this:
@@ -119,7 +119,7 @@ class PostForm extends FormValidator
 You can add fields which you want when creating command like this:
 
 ``` sh
-php artisan form:make Forms/SongForm --fields="name:text, lyrics:textarea, publish:checkbox"
+php artisan make:form Forms/SongForm --fields="name:text, lyrics:textarea, publish:checkbox"
 ```
 
 And that will create form in path `app/Forms/SongForm.php` with content:
