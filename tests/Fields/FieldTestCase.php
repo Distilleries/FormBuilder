@@ -11,7 +11,8 @@ abstract class FieldTestCase extends FormTestCase {
 
         parent::getEnvironmentSetUp($app);
 
-        $app['router']->controller('field', 'FieldController');
+        $app['router']->post('field', 'FieldController@postIndex');
+
 
     }
 

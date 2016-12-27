@@ -75,7 +75,7 @@ class ChoiceType extends ParentType
     protected function buildCheckableChildren($fieldType, $fieldMultiple)
     {
         foreach ((array) $this->options['choices'] as $key => $choice) {
-            $id = $choice.'_'.$key;
+            $id = str_slug($choice).'_'.$key;
             $this->children[] = new $fieldType(
                 $this->name.$fieldMultiple,
                 $this->choiceType,

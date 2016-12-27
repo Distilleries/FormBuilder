@@ -5,7 +5,7 @@ class ConsoleTest extends FormTestCase
 
     public function testConsoleCreateForm()
     {
-        $this->app['Illuminate\Contracts\Console\Kernel']->call('form:make', [
+        $this->app['Illuminate\Contracts\Console\Kernel']->call('make:form', [
             'name' => 'TestForm',
             '--fields' => 'test1:hidden, test2:text',
         ]);
