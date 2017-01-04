@@ -18,9 +18,11 @@
                             $options['default_value'] = is_string($options['default_value']) ? explode(',', $options['default_value']) : $options['default_value'];
                         }
                         ?>
-                        @foreach($options['default_value'] as $tag)
-                            <span class="label label-info">{!! $tag !!} </span>
-                        @endforeach
+                        @if(is_array($options['default_value']) && !empty($options['default_value']))
+                            @foreach($options['default_value'] as $tag)
+                                <span class="label label-info">{!! $tag !!} </span>
+                            @endforeach
+                        @endif
                     @else
                         <?php $options['class'] = isset($options['class']) ? $options['class'] . ' tags ' : ' tags '; ?>
                         {!! Form::input($type, $name, $options['default_value'], $options['attr']) !!}
