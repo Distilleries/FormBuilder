@@ -32,13 +32,13 @@
                     var elt =  jQuery("input[name='{!!$name!!}']").val().split(",");
 
                     jQuery.ajax({
-                        url: "{!! (!empty($options['action']))?$options['action']:'' !!} ",
+                        url: "{!! (!empty($options['action']))?$options['action']:'' !!}",
                         dataType: 'json',
                         type: 'POST',
                         data: {
                             'ids': elt,
                             'no_edit': true,
-                            '_token': jQuery("input[name='_token']").val()
+                            '_token': jQuery("meta[name='csrf-token']").attr('content')
                         }
                     }).done(function (data) {
                         @if($options['multiple']=='true')
@@ -91,7 +91,7 @@
 
             if (elt.length > 0) {
                 jQuery.ajax({
-                    url: "{!! (!empty($options['action']))?$options['action']:'' !!} ",
+                    url: "{!! (!empty($options['action']))?$options['action']:'' !!}",
                     dataType: 'json',
                     type: 'POST',
                     data: {
