@@ -32,7 +32,7 @@
                     var elt =  jQuery("input[name='{!!$name!!}']").val().split(",");
 
                     var csrfToken = jQuery("input[name='_token']").val();
-                    if (csrfToken === '') {
+                    if ((typeof csrfToken === 'undefined') || (csrfToken == '')) {
                         csrfToken = jQuery("meta[name='csrf-token']").attr('content');
                     }
 
