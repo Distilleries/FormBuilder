@@ -31,6 +31,11 @@
                     @if(isset($noEdit) && $noEdit === true)
                     var elt =  jQuery("input[name='{!!$name!!}']").val().split(",");
 
+                    var csrfToken = jQuery("input[name='_token']").val();
+                    if (csrfToken === '') {
+                        csrfToken = jQuery("meta[name='csrf-token']").attr('content');
+                    }
+
                     jQuery.ajax({
                         url: "{!! (!empty($options['action']))?$options['action']:'' !!}",
                         dataType: 'json',
@@ -38,7 +43,7 @@
                         data: {
                             'ids': elt,
                             'no_edit': true,
-                            '_token': jQuery("meta[name='csrf-token']").attr('content')
+                            '_token': csrfToken
                         }
                     }).done(function (data) {
                         @if($options['multiple']=='true')
