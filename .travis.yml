@@ -36,7 +36,7 @@ script:
     if [[ $TRAVIS_PHP_VERSION =~ ^7 ]]; then
       phpdbg -qrr vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.clover --coverage-text;
     else
-     phpunit --configuration phpunit.xml --coverage-clover=coverage.clover
+      vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --coverage-clover=coverage.clover
     fi
 
 matrix:
