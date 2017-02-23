@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class FormTestCase extends \Orchestra\Testbench\TestCase
+abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
 {
 
     public function setUp(){

@@ -69,7 +69,7 @@ class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
     {
         if (! $this->app->offsetExists('form')) {
             $this->app->singleton('form', function ($app) {
-                $form = new LaravelForm($app['html'], $app['url'], $app['view'], $app['session.store']->getToken());
+                $form = new LaravelForm($app['html'], $app['url'], $app['view'], $app['session.store']->token());
                 return $form->setSessionStore($app['session.store']);
             });
 
