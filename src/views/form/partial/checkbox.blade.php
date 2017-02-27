@@ -5,7 +5,7 @@
             @endif
 
             <label class="col-md-3"></label>
-            <div class="col-md-4">
+            <div class="col-md-9">
                 @if ($showLabel)
                     {!! $options['label'].': ' !!}
                 @endif
@@ -21,7 +21,7 @@
     @if ($showLabel and $showField and ! $options['is_child'])
         <div {!! $options['wrapperAttrs'] !!}>
             <label class="col-md-3"></label>
-            <div class="col-md-4">
+            <div class="col-md-9">
                 @endif
 
                 @if ($showField)
