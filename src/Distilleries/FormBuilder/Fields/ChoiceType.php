@@ -81,7 +81,7 @@ class ChoiceType extends ParentType
                 $this->choiceType,
                 $this->parent,
                 [
-                    'attr'       => ['id' => $id],
+                    'attr'       => array_merge($this->options['attr'],['id' => $id]),
                     'label_attr' => ['for' => $id],
                     'label'         => $choice,
                     'is_child'      => true,
