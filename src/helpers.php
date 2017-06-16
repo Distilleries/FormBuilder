@@ -1,10 +1,9 @@
 <?php
 
-use Distilleries\FormBuilder\Fields\FormField;
 
 if (!function_exists('form_widget_view')) {
 
-    function form_widget_view(FormField $formField, array $options = [])
+    function form_widget_view(\Distilleries\FormBuilder\Fields\FormFieldsView $formField, array $options = [])
     {
         return $formField->view($options, false, true, false);
     }
