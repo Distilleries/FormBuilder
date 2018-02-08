@@ -6,7 +6,7 @@ class FormTest extends FieldTestCase {
     {
 
         try{
-
+        
              $this->call('POST', 'field', [
                 'fields' => [
                     'sub_form' => [
@@ -18,9 +18,12 @@ class FormTest extends FieldTestCase {
                 ]
             ]);
 
+            // Use to handle https://phpunit.de/manual/current/en/risky-tests.html 
+            $this->assertTrue(true);
+
         }catch (Exception $e){
+
             $this->assertEquals('Please provide instance of Form class.',$e->getMessage());
         }
-
     }
 }
