@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Debug\ExceptionHandler;
 
 abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
 {
@@ -45,6 +46,32 @@ abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
     {
         parent::tearDown();
         Mockery::close();
+    }
+
+
+    protected function disableExceptionHandling()
+    {
+        $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
+        $this->app->instance(ExceptionHandler::class, new class extends \Illuminate\Foundation\Exceptions\Handler
+        {
+            public function __construct()
+            {
+            }
+            public function report(\Exception $e)
+            {
+            }
+            public function render($request, \Exception $e)
+            {
+                throw $e;
+            }
+        }
+        );
+    }
+    
+    protected function withExceptionHandling()
+    {
+        $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
+        return $this;
     }
 
 }

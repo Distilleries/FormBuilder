@@ -4,6 +4,7 @@ class FormTest extends FieldTestCase {
 
     public function testNotAForm()
     {
+        $this->disableExceptionHandling();
 
         try{
         
@@ -17,9 +18,6 @@ class FormTest extends FieldTestCase {
                     ]
                 ]
             ]);
-
-            // Use to handle https://phpunit.de/manual/current/en/risky-tests.html 
-            $this->assertTrue(true);
 
         }catch (Exception $e){
 
