@@ -42,6 +42,12 @@ class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
         $this->commands(\Distilleries\FormBuilder\Console\FormMakeCommand::class);
 
         $this->alias();
+
+        \Cloudinary::config([
+            'cloud_name' => config('laravel-form-builder.cloudinary.cloud_name'),
+            'api_key' => config('laravel-form-builder.cloudinary.api_key'),
+            'api_secret' => config('laravel-form-builder.cloudinary.api_secret'),
+        ]);
     }
 
     protected function registerFormHelper()
