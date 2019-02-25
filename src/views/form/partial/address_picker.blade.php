@@ -27,7 +27,7 @@
     @if ($showError && isset($errors))
         {!!$errors->first(array_get($options, 'real_name', $name), '<span '.$options['errorAttrs'].'>:message</span>')!!}
     @endif
-    <div  id="{!!$uniqId!!} -map" class="" style="height: 300px"></div>
+    <div  id="{!!$uniqId!!}-map" class="" style="height: 300px"></div>
 
     @if(isset($options['help']))
         <span class="help-block">{!!$options['help']!!} </span>
@@ -36,7 +36,7 @@
 @if ($showLabel && $showField && !$options['is_child'])
 </div>
 @endif
-<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places&key={{config('form-builder.api_google_map_key')}}'></script>
+<script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key={{config('form-builder.api_google_map_key')}}'></script>
 <script>
     jQuery(document).ready(function(){
         jQuery('#{{$uniqId}}-map').locationpicker({
