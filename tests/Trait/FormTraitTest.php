@@ -222,4 +222,19 @@ class FormTraitTest extends TraitTestCase {
         $this->assertRedirectedTo('/form');
     }
 
+    public function testOverrideAfterValidation()
+    {
+        $oldUser = User::where('id', '=', 1)->get()->last();
+        $faker   = Faker\Factory::create();
+        $data    = [
+            'id'             => $oldUser->id,
+            'name'           => $oldUser->name,
+            'email'          => $faker->email,
+            'after_validate' => true,
+        ];
+
+        $this->call('POST', 'validator/edit/1', $data);
+        $this->assertRedirectedTo('/');
+        $this->assertSessionHasErrors('after_validate');
+    }
 }
