@@ -2,12 +2,12 @@
 
 namespace Distilleries\FormBuilder;
 
-use Illuminate\Foundation\AliasLoader;
-use Kris\LaravelFormBuilder\FormHelper;
-use Kris\LaravelFormBuilder\FormBuilder;
 use Collective\Html\FormBuilder as LaravelForm;
 use Collective\Html\HtmlBuilder as LaravelHtml;
+use Illuminate\Foundation\AliasLoader;
+use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderServiceProvider as BaseFormBuilderServiceProvider;
+use Kris\LaravelFormBuilder\FormHelper;
 
 class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
 {
@@ -22,6 +22,7 @@ class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
         $this->publishes([__DIR__ . '/../../views' => base_path('resources/views/vendor/form-builder')], 'views');
 
         $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'form-builder');
+        $this->registerCloudinaryConfig();
     }
 
     public function register()
@@ -42,12 +43,6 @@ class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
         $this->commands(\Distilleries\FormBuilder\Console\FormMakeCommand::class);
 
         $this->alias();
-
-        \Cloudinary::config([
-            'cloud_name' => config('laravel-form-builder.cloudinary.cloud_name'),
-            'api_key' => config('laravel-form-builder.cloudinary.api_key'),
-            'api_secret' => config('laravel-form-builder.cloudinary.api_secret'),
-        ]);
     }
 
     protected function registerFormHelper()
@@ -96,6 +91,17 @@ class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
     {
         if (! array_key_exists($alias, AliasLoader::getInstance()->getAliases())) {
             AliasLoader::getInstance()->alias($alias, $class);
+        }
+    }
+
+    protected function registerCloudinaryConfig()
+    {
+        if (config('form-builder.cloudinary.enabled', false)) {
+            \Cloudinary::config([
+                'cloud_name' => config('form-builder.cloudinary.cloud_name'),
+                'api_key'    => config('form-builder.cloudinary.api_key'),
+                'api_secret' => config('form-builder.cloudinary.api_secret'),
+            ]);
         }
     }
 }
