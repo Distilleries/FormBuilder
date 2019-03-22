@@ -22,7 +22,7 @@
                                       class="btn blue"
                                       onclick="moxman.browse({
                                       @if(!empty($options['extensions']))
-                                              extensions: '{{$options['extensions']}} ',
+                                              extensions: '{{$options['extensions']}}',
                                       @endif
                                       @if(!empty($options['view']))
                                               view: '{{$options['view']}}',
