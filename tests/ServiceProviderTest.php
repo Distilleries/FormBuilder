@@ -1,6 +1,15 @@
 <?php
 
-class ServiceProviderTest extends FormTestCase {
+class ServiceProviderTest extends FormTestCase
+{
+    protected function getEnvironmentSetUp($app)
+    {
+        parent::getEnvironmentSetUp($app);
+        $app['config']->set('form-builder.cloudinary.enabled', true);
+        $app['config']->set('form-builder.cloudinary.cloud_name', 'test_cloud_name');
+        $app['config']->set('form-builder.cloudinary.api_key', 'test_api_key');
+        $app['config']->set('form-builder.cloudinary.api_secret', 'test_api_secret');
+    }
 
     public function testService()
     {
@@ -19,5 +28,34 @@ class ServiceProviderTest extends FormTestCase {
         $this->assertEquals($this->app->request, $helper->getRequest());
     }
 
+    public function testCloudinaryConfig()
+    {
+        $config = Cloudinary::config();
+
+        $this->assertThat(
+            $config,
+            $this->arrayHasKey('cloud_name')
+        );
+        $this->assertThat(
+            $config['cloud_name'],
+            $this->equalTo('test_cloud_name')
+        );
+        $this->assertThat(
+            $config,
+            $this->arrayHasKey('api_key')
+        );
+        $this->assertThat(
+            $config['api_key'],
+            $this->equalTo('test_api_key')
+        );
+        $this->assertThat(
+            $config,
+            $this->arrayHasKey('api_secret')
+        );
+        $this->assertThat(
+            $config['api_secret'],
+            $this->equalTo('test_api_secret')
+        );
+    }
 }
 

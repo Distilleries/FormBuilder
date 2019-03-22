@@ -2,6 +2,7 @@
 
 use \Validator;
 use \Redirect;
+use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
 class FormValidator extends FormView {
 
@@ -89,6 +90,10 @@ class FormValidator extends FormView {
 
             $validation = Validator::make($this->formHelper->getRequest()->all(), $this->getRules());
 
+            $validation->after(function ($validator) {
+                $this->afterValidate($validator, $this->formHelper->getRequest()->all());
+            });
+
             if ($validation->fails())
             {
                 $this->hasError = true;
@@ -100,6 +105,13 @@ class FormValidator extends FormView {
         return $this->validation;
     }
 
+    // ------------------------------------------------------------------------------------------------
+
+    protected function afterValidate(ValidatorContract $validator, array $inputs)
+    {
+        return;
+    }
+    
     // ------------------------------------------------------------------------------------------------
 
     public function hasError()

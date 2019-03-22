@@ -266,7 +266,12 @@ class TestValidatorForm extends FormValidator {
         $this->addDefaultActions();
     }
 
-
+    protected function afterValidate(\Illuminate\Contracts\Validation\Validator $validator, array $inputs)
+    {
+        if (isset($inputs['after_validate'])) {
+            $validator->errors()->add('after_validate', 'Add custom error after validation');
+        }
+    }
 }
 
 
