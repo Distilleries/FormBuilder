@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 abstract class TraitTestCase extends FormTestCase {
 
 
-    public function setUp()
+    public function setUp(): void
     {
 
         parent::setUp();
