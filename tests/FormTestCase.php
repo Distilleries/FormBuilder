@@ -42,7 +42,7 @@ abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
         ];
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         Mockery::close();
