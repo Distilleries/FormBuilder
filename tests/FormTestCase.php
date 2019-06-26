@@ -5,7 +5,7 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
 abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
 {
 
-    public function setUp(){
+    public function setUp(): void {
 
         parent::setUp();
         $this->app['Illuminate\Contracts\Console\Kernel']->call('vendor:publish', ['--all' => true]);
@@ -42,7 +42,7 @@ abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
         ];
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         Mockery::close();
@@ -67,7 +67,7 @@ abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
         }
         );
     }
-    
+
     protected function withExceptionHandling()
     {
         $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
