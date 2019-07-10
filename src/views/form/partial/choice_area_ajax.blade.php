@@ -4,7 +4,7 @@
     <tr>
         <th>@{{ libelle.base }}</th>
             <th v-for="(key, head) in columns | orderBy '$key' -1">
-            @if(!isset($noEdit) or $noEdit === false)
+            @if(!isset($noEdit) ?? $noEdit === false)
                 <div class="input-group">
                     <div class="icheck-inline">
                         <label><h4><strong>@{{ libelle[key] }}</strong></h4></label>
