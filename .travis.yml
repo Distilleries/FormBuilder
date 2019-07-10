@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - 7.1
+  - 7.1.3
   - 7.2
 
 env:
@@ -9,11 +9,8 @@ env:
     - setup=basic
 
 matrix:
-  include:
-    - php: 7.1
-      env: setup=lowest
-    - php: 7.1
-      env: setup=stable
+  fast_finish: true
+
 sudo: false
 
 services:
@@ -26,8 +23,6 @@ before_install:
 
 install:
   - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-dist --no-suggest; fi
-  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
-  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable --no-suggest; fi
 
 script:
   - >
@@ -37,12 +32,9 @@ script:
       vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --coverage-clover=coverage.clover
     fi
 
-matrix:
-  fast_finish: true
-
 after_script:
 - wget https://scrutinizer-ci.com/ocular.phar
 - php ocular.phar code-coverage:upload --access-token="9857f9bb4b1c260b94eb773a541d6e42e05db0db45d5a25757590276d5e50445" --format=php-clover coverage.clover
 
 notifications:
-slack: big-boss-studio:vLrsJ3hpqgIYugU7IKLMUwj2
+  slack: big-boss-studio:vLrsJ3hpqgIYugU7IKLMUwj2
