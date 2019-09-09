@@ -19,7 +19,7 @@
 
 
     @if ($showError && isset($errors))
-        {!!$errors->first(array_get($options, 'real_name', $name), '<span '.$options['errorAttrs'].'>:message</span>')!!}
+        {!!$errors->first(\Arr::get($options, 'real_name', $name), '<span '.$options['errorAttrs'].'>:message</span>')!!}
     @endif
     @if(isset($options['help']))
         <span class="help-block">{!!$options['help']!!} </span>

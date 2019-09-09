@@ -1,10 +1,12 @@
-<?php  namespace Distilleries\FormBuilder\Fields;
+<?php
 
+namespace Distilleries\FormBuilder\Fields;
+
+use Illuminate\Support\Arr;
 use Kris\LaravelFormBuilder\Form;
 
 abstract class ParentType extends FormFieldsView
 {
-
     /**
      * @var mixed
      */
@@ -49,7 +51,7 @@ abstract class ParentType extends FormFieldsView
      */
     public function getChild($key)
     {
-        return array_get($this->children, $key);
+        return Arr::get($this->children, $key);
     }
 
     public function isRendered()

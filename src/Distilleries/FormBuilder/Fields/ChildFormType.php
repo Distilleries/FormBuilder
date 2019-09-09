@@ -1,5 +1,6 @@
 <?php namespace Distilleries\FormBuilder\Fields;
 
+use Illuminate\Support\Arr;
 use Kris\LaravelFormBuilder\Form;
 
 class ChildFormType extends ParentType {
@@ -36,7 +37,7 @@ class ChildFormType extends ParentType {
      */
     public function getClass()
     {
-        $class = array_get($this->options, 'class');
+        $class = Arr::get($this->options, 'class');
 
         if ($class && $class instanceof Form)
         {

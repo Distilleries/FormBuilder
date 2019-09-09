@@ -23,9 +23,11 @@ class ServiceProviderTest extends FormTestCase
 
     public function testHelper()
     {
+        /** @var \Kris\LaravelFormBuilder\FormHelper $helper */
         $helper = $this->app->make('Kris\LaravelFormBuilder\FormHelper');
+
         $this->assertEquals($this->app->view, $helper->getView());
-        $this->assertEquals($this->app->request, $helper->getRequest());
+        $this->assertEquals($this->app->translator, $helper->getTranslator());
     }
 
     public function testCloudinaryConfig()

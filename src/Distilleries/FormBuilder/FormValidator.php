@@ -1,10 +1,15 @@
-<?php namespace Distilleries\FormBuilder;
+<?php
 
+namespace Distilleries\FormBuilder;
+
+use Kris\LaravelFormBuilder\Traits\ValidatesWhenResolved;
 use \Validator;
 use \Redirect;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
-class FormValidator extends FormView {
+class FormValidator extends FormView
+{
+    use ValidatesWhenResolved;
 
     public static $rules = [];
     public static $rules_update = null;
@@ -64,7 +69,8 @@ class FormValidator extends FormView {
 
     // ------------------------------------------------------------------------------------------------
 
-    public function validate()
+    /*
+    public function validate($validationRules = [], $messages = [])
     {
         if ($this->validation == null)
         {
@@ -104,6 +110,7 @@ class FormValidator extends FormView {
 
         return $this->validation;
     }
+    */
 
     // ------------------------------------------------------------------------------------------------
 
@@ -150,7 +157,7 @@ class FormValidator extends FormView {
 
     // ------------------------------------------------------------------------------------------------
 
-    protected function getRules()
+    public function getRules($overrideRules = [])
     {
         $key = !empty($this->model) ? $this->formHelper->getRequest()->get($this->model->getKeyName()) : null;
 

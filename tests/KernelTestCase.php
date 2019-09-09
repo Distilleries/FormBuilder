@@ -1,9 +1,9 @@
 <?php
 
 use Orchestra\Testbench\Http\Kernel as BaseKernel;
+
 class KernelTestCase extends BaseKernel
 {
-
     protected $bootstrappers = [];
 
     protected $middleware = [

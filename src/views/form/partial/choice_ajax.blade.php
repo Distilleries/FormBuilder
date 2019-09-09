@@ -17,7 +17,7 @@
         {!! Form::input('hidden', $name, $options['default_value'], $options['attr']) !!}
 
         @if($showError && isset($errors))
-            {!!$errors->first(array_get($options, 'real_name', $name), '<div '.$options['errorAttrs'].'>:message</div>')!!}
+            {!!$errors->first(\Arr::get($options, 'real_name', $name), '<div '.$options['errorAttrs'].'>:message</div>')!!}
         @endif
 
         @if(isset($options['help']))

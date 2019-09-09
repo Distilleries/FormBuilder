@@ -1,10 +1,10 @@
 <?php
 
-class ChoiceTest extends FieldTestCase {
+class ChoiceTest extends FieldTestCase
+{
 
     public function testChoiceAreaRender()
     {
-
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'permission' => ['type' => 'choice_area', 'options' => []]
@@ -19,7 +19,8 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\ChoiceArea', $field);
     }
 
-    public function testRadioRender(){
+    public function testRadioRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'choice', 'options' =>  [
@@ -37,7 +38,9 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\ChoiceType', $field);
     }
 
-    public function testRadioOptionChoiceRender(){
+
+    public function testRadioOptionChoiceRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'choice', 'options' =>  [
@@ -56,7 +59,8 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\ChoiceType', $field);
     }
 
-    public function testCheckboxRender(){
+    public function testCheckboxRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'choice', 'options' =>  [
@@ -74,7 +78,8 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\ChoiceType', $field);
     }
 
-    public function testSelectMultipleRender(){
+    public function testSelectMultipleRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'choice', 'options' =>  [
@@ -92,7 +97,8 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\ChoiceType', $field);
     }
 
-    public function testSelectRender(){
+    public function testSelectRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'choice', 'options' =>  [
@@ -110,7 +116,8 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\ChoiceType', $field);
     }
 
-    public function testSelectTypeRender(){
+    public function testSelectTypeRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'select', 'options' =>  []]
@@ -125,7 +132,8 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\SelectType', $field);
     }
 
-    public function testCheckTypeRender(){
+    public function testCheckTypeRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'checkbox', 'options' =>  []]
@@ -140,7 +148,8 @@ class ChoiceTest extends FieldTestCase {
         $this->assertInstanceOf('Distilleries\FormBuilder\Fields\CheckableType', $field);
     }
 
-    public function testChoiceAjaxRender(){
+    public function testChoiceAjaxRender()
+    {
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'choice_content' => ['type' => 'choice_ajax', 'options' =>  []]

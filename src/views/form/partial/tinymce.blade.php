@@ -20,7 +20,7 @@
             @endif
 
             @if ($showError && isset($errors))
-                {!! $errors->first(array_get($options, 'real_name', $name), '<div ' . $options['errorAttrs'] . '>:message</div>') !!}
+                {!! $errors->first(\Arr::get($options, 'real_name', $name), '<div ' . $options['errorAttrs'] . '>:message</div>') !!}
             @endif
         </div>
 @if ($showLabel && $showField)

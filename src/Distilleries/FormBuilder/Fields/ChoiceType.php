@@ -1,4 +1,8 @@
-<?php namespace Distilleries\FormBuilder\Fields;
+<?php
+
+namespace Distilleries\FormBuilder\Fields;
+
+use Illuminate\Support\Str;
 
 class ChoiceType extends ParentType
 {
@@ -75,7 +79,7 @@ class ChoiceType extends ParentType
     protected function buildCheckableChildren($fieldType, $fieldMultiple)
     {
         foreach ((array) $this->options['choices'] as $key => $choice) {
-            $id = str_slug($choice).'_'.$key;
+            $id = Str::slug($choice).'_'.$key;
             $this->children[] = new $fieldType(
                 $this->name.$fieldMultiple,
                 $this->choiceType,

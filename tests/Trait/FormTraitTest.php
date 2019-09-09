@@ -1,11 +1,9 @@
 <?php
 
-
-class FormTraitTest extends TraitTestCase {
-
+class FormTraitTest extends TraitTestCase
+{
     public function testAdd()
     {
-
         $response = $this->call('GET', 'form/edit');
         $this->assertResponseOk();
         $this->assertViewHas('form');
