@@ -5,9 +5,12 @@ namespace Distilleries\FormBuilder;
 use Collective\Html\FormBuilder as LaravelForm;
 use Collective\Html\HtmlBuilder as LaravelHtml;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Foundation\Application;
+use Kris\LaravelFormBuilder\Form;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderServiceProvider as BaseFormBuilderServiceProvider;
 use Kris\LaravelFormBuilder\FormHelper;
+use Kris\LaravelFormBuilder\Traits\ValidatesWhenResolved;
 
 class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
 {
@@ -37,19 +40,35 @@ class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
         $this->registerFormHelper();
 
         $this->app->singleton('laravel-form-builder', function ($app) {
-            return new FormBuilder($app, $app['laravel-form-helper']);
+            return new FormBuilder($app, $app['laravel-form-helper'], $app['events']);
         });
 
         $this->commands(\Distilleries\FormBuilder\Console\FormMakeCommand::class);
 
         $this->alias();
+
+        $this->app->afterResolving(Form::class, function ($object, Application $app) {
+            /** @var \Illuminate\Http\Request $request */
+            $request = $app->make('request');
+
+            if (in_array(ValidatesWhenResolved::class, class_uses($object)) && $request->method() !== 'GET') {
+                $form = $app->make('laravel-form-builder')->setDependenciesAndOptions($object);
+                $form->buildForm();
+                //$form->redirectIfNotValid();
+            }
+        });
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function registerFormHelper()
     {
         $this->app->singleton('laravel-form-helper', function ($app) {
-            $config = $app['config']->get('form-builder');
-            return new FormHelper($app['view'], $app['request'], $config);
+
+            $configuration = $app['config']->get('form-builder');
+
+            return new FormHelper($app['view'], $app['translator'], $configuration);
         });
 
         $this->app->alias('laravel-form-helper', 'Kris\LaravelFormBuilder\FormHelper');

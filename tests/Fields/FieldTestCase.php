@@ -35,7 +35,7 @@ class FieldController extends \Illuminate\Routing\Controller {
 
         $form = app('Distilleries\FormBuilder\FormValidator')
         ->setFormHelper(app('laravel-form-helper'))
-        ->setFormBuilder(new  Kris\LaravelFormBuilder\FormBuilder(app(),app('laravel-form-helper')))
+        ->setFormBuilder(app('laravel-form-builder'))
         ->setFormOptions([
             'model' => $model
         ]);

@@ -1,27 +1,24 @@
 <?php
 
-class FormTest extends FieldTestCase {
-
+class FormTest extends FieldTestCase
+{
     public function testNotAForm()
     {
-        $this->disableExceptionHandling();
+        $this->withoutExceptionHandling();
 
-        try{
-        
-             $this->call('POST', 'field', [
+        try {
+            $this->call('POST', 'field', [
                 'fields' => [
                     'sub_form' => [
-                        'type' => 'form',
+                        'type'    => 'form',
                         'options' => [
                             'class' => new User
                         ]
                     ]
                 ]
             ]);
-
-        }catch (Exception $e){
-
-            $this->assertEquals('Please provide instance of Form class.',$e->getMessage());
+        } catch (Exception $e) {
+            $this->assertEquals('Please provide instance of Form class.', $e->getMessage());
         }
     }
 }

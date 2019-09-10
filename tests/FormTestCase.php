@@ -4,9 +4,8 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
 
 abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
 {
-
-    public function setUp(): void {
-
+    public function setUp(): void
+    {
         parent::setUp();
         $this->app['Illuminate\Contracts\Console\Kernel']->call('vendor:publish', ['--all' => true]);
         $this->refreshApplication();
@@ -26,7 +25,6 @@ abstract class FormTestCase extends \Orchestra\Testbench\BrowserKit\TestCase
             'prefix'   => '',
         ));
     }
-
 
     protected function getPackageProviders($application)
     {

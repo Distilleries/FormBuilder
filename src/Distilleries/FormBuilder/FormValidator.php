@@ -1,10 +1,15 @@
-<?php namespace Distilleries\FormBuilder;
+<?php
 
+namespace Distilleries\FormBuilder;
+
+use Kris\LaravelFormBuilder\Traits\ValidatesWhenResolved;
 use \Validator;
 use \Redirect;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
-class FormValidator extends FormView {
+class FormValidator extends FormView
+{
+    use ValidatesWhenResolved;
 
     public static $rules = [];
     public static $rules_update = null;
@@ -58,13 +63,13 @@ class FormValidator extends FormView {
 
     public function validateAndRedirectBack()
     {
-        return Redirect::back()->withErrors($this->validate())->withInput($this->formHelper->getRequest()->all());
+        return Redirect::back()->withErrors($this->validate())->withInput($this->request->all());
 
     }
 
     // ------------------------------------------------------------------------------------------------
 
-    public function validate()
+    public function validate($validationRules = [], $messages = [])
     {
         if ($this->validation == null)
         {
@@ -76,7 +81,7 @@ class FormValidator extends FormView {
                 if ($field->getType() == 'form')
                 {
 
-                    $validation = Validator::make($this->formHelper->getRequest()->get($field->getName(),[]), $field->getClass()->getRules());
+                    $validation = Validator::make($this->request->get($field->getName(),[]), $field->getClass()->getRules());
 
                     if ($validation->fails())
                     {
@@ -88,10 +93,10 @@ class FormValidator extends FormView {
                 }
             }
 
-            $validation = Validator::make($this->formHelper->getRequest()->all(), $this->getRules());
+            $validation = Validator::make($this->request->all(), $this->getRules());
 
             $validation->after(function ($validator) {
-                $this->afterValidate($validator, $this->formHelper->getRequest()->all());
+                $this->afterValidate($validator, $this->request->all());
             });
 
             if ($validation->fails())
@@ -111,7 +116,7 @@ class FormValidator extends FormView {
     {
         return;
     }
-    
+
     // ------------------------------------------------------------------------------------------------
 
     public function hasError()
@@ -150,9 +155,9 @@ class FormValidator extends FormView {
 
     // ------------------------------------------------------------------------------------------------
 
-    protected function getRules()
+    public function getRules($overrideRules = [])
     {
-        $key = !empty($this->model) ? $this->formHelper->getRequest()->get($this->model->getKeyName()) : null;
+        $key = !empty($this->model) ? $this->request->get($this->model->getKeyName()) : null;
 
         return ($this->getUpdateRules() == null || empty($key)) ? $this->getGeneralRules() : $this->getUpdateRules();
     }

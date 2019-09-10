@@ -4,7 +4,7 @@ class AddressPickerTest extends FieldTestCase {
 
     public function testRender()
     {
-
+        $this->withoutExceptionHandling();
         $response = $this->call('POST', 'field', [
             'fields' => [
                 'address' => ['type' => 'address_picker', 'options' => []]

@@ -241,7 +241,7 @@ class TestValidatorForm extends FormValidator {
 
     protected function getUpdateRules()
     {
-        $key                           = $this->formHelper->getRequest()->get($this->model->getKeyName());
+        $key                           = $this->request->get($this->model->getKeyName());
         static::$rules_update['email'] = 'required|email|unique:users,email,'.$key;
 
         return parent::getUpdateRules();
@@ -290,7 +290,7 @@ class TestSelectedForm extends FormValidator {
 
     protected function getUpdateRules()
     {
-        $key                           = $this->formHelper->getRequest()->get($this->model->getKeyName());
+        $key                           = $this->request->get($this->model->getKeyName());
         static::$rules_update['email'] = 'required|email|unique:users,email,'.$key;
 
         return parent::getUpdateRules();

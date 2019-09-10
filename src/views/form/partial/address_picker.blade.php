@@ -25,7 +25,7 @@
     @endif
 
     @if ($showError && isset($errors))
-        {!!$errors->first(array_get($options, 'real_name', $name), '<span '.$options['errorAttrs'].'>:message</span>')!!}
+        {!!$errors->first(\Arr::get($options, 'real_name', $name), '<span '.$options['errorAttrs'].'>:message</span>')!!}
     @endif
     <div  id="{!!$uniqId!!}-map" class="" style="height: 300px"></div>
 

@@ -16,7 +16,7 @@ class StaticLabelTest extends FormTestCase {
         $result = \Distilleries\FormBuilder\Helpers\StaticLabel::yesNo(\Distilleries\FormBuilder\Helpers\StaticLabel::STATUS_ONLINE);
 
         $this->assertTrue(is_string($result));
-        $this->assertEquals($this->app['translator']->trans('form-builder::form.yes'), $result);
+        $this->assertEquals($this->app['translator']->get('form-builder::form.yes'), $result);
     }
 
     public function testNa()
@@ -24,6 +24,6 @@ class StaticLabelTest extends FormTestCase {
         $result = \Distilleries\FormBuilder\Helpers\StaticLabel::yesNo(- 1);
 
         $this->assertTrue(is_string($result));
-        $this->assertEquals($this->app['translator']->trans('form-builder::form.na'), $result);
+        $this->assertEquals($this->app['translator']->get('form-builder::form.na'), $result);
     }
 }
