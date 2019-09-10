@@ -54,7 +54,7 @@ class FormBuilderServiceProvider extends BaseFormBuilderServiceProvider
             if (in_array(ValidatesWhenResolved::class, class_uses($object)) && $request->method() !== 'GET') {
                 $form = $app->make('laravel-form-builder')->setDependenciesAndOptions($object);
                 $form->buildForm();
-                $form->redirectIfNotValid();
+                //$form->redirectIfNotValid();
             }
         });
     }

@@ -1,4 +1,6 @@
-<?php namespace Distilleries\FormBuilder\States;
+<?php
+
+namespace Distilleries\FormBuilder\States;
 
 use \FormBuilder;
 use Illuminate\Http\Request;
